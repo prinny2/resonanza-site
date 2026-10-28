@@ -17,6 +17,10 @@
 <meta property="og:image:height" content="675">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://resonanza.com.br/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"ResonAnza","url":"https://resonanza.com.br/","logo":"https://resonanza.com.br/logo.png","email":"contato@resonanza.com.br","taxID":"67.046.121/0001-45","description":"Inteligência territorial energética: dados públicos da ANP reinterpretados para encontrar energia renovável de base em bacias sedimentares brasileiras.","contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"contato@resonanza.com.br","telephone":"+55-91-98515-6690","availableLanguage":["pt-BR","en"]}}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -157,7 +161,7 @@ section.block { padding: clamp(90px, 12vw, 150px) 0 0; }
 
 .sim label { display: block; margin-top: 18px; font-size: 14px; color: var(--muted); }
 .sim label strong { float: right; font: 500 14px var(--mono); color: var(--ink); }
-input[type=range] { width: 100%; margin: 10px 0 0; accent-color: var(--em); height: 24px; }
+input[type=range] { width: 100%; margin: 10px 0 0; accent-color: var(--em); height: 30px; cursor: pointer; }
 .out { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
 .out > div { padding: 14px 12px; border-radius: 14px; background: rgba(4, 20, 15, .55); border: 1px solid var(--line); }
 .out .v { font: 400 30px/1 var(--serif); }
@@ -225,6 +229,27 @@ input[type=range] { width: 100%; margin: 10px 0 0; accent-color: var(--em); heig
 footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--dim); font: 400 13px/1.6 var(--mono); }
 footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
 
+/* Fases */
+.phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
+.phase { padding: 26px 24px 26px; display: flex; flex-direction: column; }
+.phase .num { font: 400 46px/1 var(--serif); color: var(--gold); }
+.phase h3 { margin-top: 14px; }
+.phase p { margin-top: 10px; color: var(--muted); font-size: 15px; flex: 1; }
+.phase .gate { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); font: 400 12px/1.5 var(--mono); color: var(--em); }
+
+/* WhatsApp */
+.wa {
+  position: fixed; z-index: 20; right: max(18px, env(safe-area-inset-right)); bottom: calc(18px + env(safe-area-inset-bottom));
+  display: inline-flex; align-items: center; gap: 10px; padding: 14px 20px 14px 16px; border-radius: 999px;
+  background: #25d366; color: #052e16; font: 600 15px/1 var(--sans); box-shadow: 0 10px 30px -8px rgba(37, 211, 102, .55);
+  transition: transform .2s, box-shadow .2s;
+}
+.wa:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -8px rgba(37, 211, 102, .7); }
+.wa svg { width: 24px; height: 24px; flex: none; }
+.contact .ctas { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+.btn.wa-inline { border-color: rgba(37, 211, 102, .5); }
+.btn.wa-inline svg { width: 18px; height: 18px; color: #25d366; }
+
 /* Entrada ao rolar */
 .js [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform .9s ease; }
 .js [data-reveal].in { opacity: 1; transform: none; }
@@ -247,6 +272,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   .stage { order: -1; max-width: 240px; justify-self: center; }
   .stage .caption { display: none; }
   .stats .grid, .cards, .who, .studies { grid-template-columns: 1fr; }
+  .phases { grid-template-columns: 1fr 1fr; }
   .stat, .stat + .stat { padding: 26px 0; border-left: 0; }
   .stat + .stat { border-top: 1px solid var(--line); }
   .pipe { padding: 22px 16px; }
@@ -259,7 +285,17 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   nav .btn { padding: 10px 14px; }
   .brand { letter-spacing: .16em; font-size: 13px; }
   .data .panel { padding: 20px 16px 18px; }
+  .hero h1 { font-size: 42px; }
+  .phases { grid-template-columns: 1fr; }
+  #chart { height: 250px; }
+  .lg { padding: 10px 12px; }
+  .out { gap: 8px; }
+  .out > div { padding: 12px 10px; }
   .out .v { font-size: 24px; }
+  .out .l { font-size: 11px; }
+  .wa { padding: 15px; }
+  .wa span { display: none; }
+  footer { padding-bottom: 100px; }
 }
 </style>
 <script>document.documentElement.classList.add("js")</script>
@@ -424,6 +460,22 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
     </div>
   </section>
 
+  <section class="block" id="fases">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <div class="kicker">Como começamos</div>
+        <h2>Em fases, com critério para seguir.</h2>
+        <p>Nenhuma fase pede investimento antes de a anterior provar o número.</p>
+      </div>
+      <div class="phases">
+        <article class="panel phase" data-reveal><div class="num">0</div><h3>Dado</h3><p>A operadora compartilha temperatura e vazão da água, sob NDA. Sem custo.</p><div class="gate">Segue se a água chega quente o bastante</div></article>
+        <article class="panel phase" data-reveal><div class="num">1</div><h3>Estudo</h3><p>Viabilidade do ativo: número de módulos, custo do calor e consumidor da região.</p><div class="gate">Segue com carta de intenção de um comprador</div></article>
+        <article class="panel phase" data-reveal><div class="num">2</div><h3>Piloto</h3><p>Um módulo instalado e operado por 12 meses, com instituição de pesquisa parceira.</p><div class="gate">Segue com disponibilidade de 90% ou mais</div></article>
+        <article class="panel phase" data-reveal><div class="num">3</div><h3>Operação</h3><p>Uma empresa de projeto instala e opera os módulos e vende o calor em contrato longo.</p><div class="gate">Sem investimento da operadora</div></article>
+      </div>
+    </div>
+  </section>
+
   <section class="block" id="para-quem">
     <div class="wrap">
       <div class="head" data-reveal>
@@ -443,7 +495,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
       <div class="kicker">Contato</div>
       <h2>Vamos conversar sobre <span class="grad">o seu ativo</span>.</h2>
       <a class="mail" href="mailto:contato@resonanza.com.br?subject=Contato%20pelo%20site">contato@resonanza.com.br <span aria-hidden="true">→</span></a>
-      <p class="sub">Respondemos em até um dia útil.</p>
+      <div class="ctas">
+        <a class="btn wa-inline" href="https://wa.me/5591985156690?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ResonAnza." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Conversar no WhatsApp</a>
+      </div>
+      <p class="sub">Respondemos em até um dia útil, de segunda a sexta.</p>
     </div>
   </section>
 </main>
@@ -451,9 +506,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
 <footer>
   <div class="wrap">
     <span>© 2026 ResonAnza · CNPJ 67.046.121/0001-45</span>
-    <span>Brasil</span>
+    <a href="mailto:contato@resonanza.com.br">contato@resonanza.com.br</a>
   </div>
 </footer>
+
+<a class="wa" href="https://wa.me/5591985156690?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ResonAnza." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg><span>WhatsApp</span></a>
 
 <script>
 const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -609,7 +666,7 @@ const fmt = (v, d = 0) => v.toLocaleString("pt-BR", { minimumFractionDigits: d, 
   });
 
   function draw() {
-    const W = Math.max(280, svg.clientWidth), H = 320, L = 52, R = 10, T = 14, B = 30;
+    const W = Math.max(280, svg.clientWidth), H = svg.clientHeight || 320, L = 52, R = 10, T = 14, B = 30;
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
     svg.innerHTML = "";
     const vis = S.filter((s) => s.on);

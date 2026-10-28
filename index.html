@@ -229,6 +229,16 @@ input[type=range] { width: 100%; margin: 10px 0 0; accent-color: var(--em); heig
 footer { border-top: 1px solid var(--line); padding: 28px 0 100px; color: var(--dim); font: 400 13px/1.6 var(--mono); }
 footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
 
+/* Fontes */
+.note a, .sources a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--line2); text-underline-offset: 3px; }
+.note a:hover, .sources a:hover { color: var(--em); text-decoration-color: var(--em); }
+.study .src { margin-top: 16px; font: 400 12px/1.5 var(--mono); color: var(--dim); }
+.sources { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; }
+.sources li { padding: 18px 0; border-top: 1px solid var(--line); }
+.sources b { display: block; font: 500 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.sources li > a, .sources li > span { display: inline-block; margin-top: 6px; font-size: 15.5px; }
+.sources p { margin-top: 4px; font-size: 14px; color: var(--dim); }
+
 /* Fases */
 .phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
 .phase { padding: 26px 24px 26px; display: flex; flex-direction: column; }
@@ -273,6 +283,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   .stage .caption { display: none; }
   .stats .grid, .cards, .who, .studies { grid-template-columns: 1fr; }
   .phases { grid-template-columns: 1fr 1fr; }
+  .sources { grid-template-columns: 1fr; }
   .stat, .stat + .stat { padding: 26px 0; border-left: 0; }
   .stat + .stat { border-top: 1px solid var(--line); }
   .pipe { padding: 22px 16px; }
@@ -286,6 +297,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   .brand { letter-spacing: .16em; font-size: 13px; }
   .data .panel { padding: 20px 16px 18px; }
   .hero h1 { font-size: 42px; }
+  .kicker { letter-spacing: .14em; }
+  .btab { flex-direction: column; align-items: flex-start; gap: 4px; }
   .phases { grid-template-columns: 1fr; }
   #chart { height: 250px; }
   .lg { padding: 10px 12px; }
@@ -334,11 +347,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   <div class="stats">
     <div class="wrap">
       <div class="grid">
-        <div class="stat" data-reveal><div class="n">107 mil<small>m³/dia</small></div><p>de água produzida em três campos maduros do Potiguar</p></div>
-        <div class="stat" data-reveal><div class="n">66 : 1</div><p>de água para cada unidade de óleo nesses mesmos campos</p></div>
+        <div class="stat" data-reveal><div class="n">107 mil<small>m³/dia</small></div><p>de água produzida em três campos maduros do Potiguar (107.237 m³/dia)</p></div>
+        <div class="stat" data-reveal><div class="n">66 : 1</div><p>de água para cada unidade de óleo nesses campos (1.615 m³/dia de óleo)</p></div>
         <div class="stat" data-reveal><div class="n">4<small>bacias</small></div><p>sedimentares no radar, do Nordeste à Margem Equatorial</p></div>
       </div>
-      <p class="note">Estreito, Alto do Rodrigues e Canto do Amaro · ANP, produção por zona, agosto de 2026.</p>
+      <p class="note">Estreito, Alto do Rodrigues e Canto do Amaro, agosto de 2026 · Fonte: <a href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-fase-de-desenvolvimento-e-producao/producao-por-zona/producao_zona_08-2026.csv" target="_blank" rel="noopener">ANP, produção por zona (CSV)</a>, somada por campo.</p>
     </div>
   </div>
 
@@ -387,7 +400,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
             <svg id="chart" role="img" aria-label="Água produzida por campo, empilhada, de janeiro de 2025 a agosto de 2026"></svg>
             <div class="tip" id="tip"></div>
           </div>
-          <p class="note">Fonte: ANP, produção por zona, somada por campo. Março de 2026 não foi publicado. Toque ou passe o cursor sobre o gráfico.</p>
+          <p class="note">Fonte: <a href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos" target="_blank" rel="noopener">ANP, dados abertos</a> — produção por zona, mês a mês, somada por campo (<a href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-fase-de-desenvolvimento-e-producao/producao-por-zona/metadados-producao-zona.docx" target="_blank" rel="noopener">metadados</a>). Março de 2026 não foi publicado. Toque ou passe o cursor sobre o gráfico.</p>
         </div>
         <div class="panel sim" data-reveal>
           <div class="ptitle"><h3>Simulador do módulo</h3><span class="note">500 kW por módulo</span></div>
@@ -404,7 +417,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
           </div>
           <p class="msg" id="oMsg"></p>
           <svg id="curve" aria-hidden="true"></svg>
-          <p class="note">Aproximação a partir do modelo do módulo (projeto FEED). Não substitui estudo de viabilidade nem medição em campo.</p>
+          <p class="note">Fonte: modelo próprio da cadeia de trocadores de um projeto FEED de 500 kW, interpolado entre os pontos calculados. Não é dado público e não substitui estudo de viabilidade nem medição em campo.</p>
         </div>
       </div>
     </div>
@@ -436,21 +449,25 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
           <div class="meta"><span class="tag">Potiguar</span>out/2026</div>
           <h3>Série de produção por campo</h3>
           <p>Água, óleo e BSW mês a mês a partir da produção por zona da ANP, com os meses sem publicação marcados como ausentes. Mais de 98% do que sai dos poços analisados é água.</p>
+          <p class="src">Fonte: ANP, produção por zona, jan/2025 – ago/2026</p>
         </article>
         <article class="panel study" data-reveal>
           <div class="meta"><span class="tag">Potiguar</span>out/2026</div>
           <h3>Zonas produtoras e profundidade</h3>
           <p>Cruzamento de zona, cota e completação para estimar a temperatura de cada zona produtora e separar o calor que vem da geologia do que depende da operação.</p>
+          <p class="src">Fonte: ANP, produção por zona e dados de poço</p>
         </article>
         <article class="panel study" data-reveal>
           <div class="meta"><span class="tag">Engenharia</span>out/2026</div>
           <h3>Modelo do módulo de recuperação de calor</h3>
           <p>A cadeia de trocadores de um projeto FEED reproduzida em código: vazão mínima em função da temperatura de entrada e o piso abaixo do qual o módulo não fecha a carga.</p>
+          <p class="src">Fonte: projeto FEED do módulo de 500 kW</p>
         </article>
         <article class="panel study" data-reveal>
           <div class="meta"><span class="tag">Dados</span>2026</div>
           <h3>Correção de temperatura de fundo de poço</h3>
           <p>Cascata de métodos de correção com calibração por formação a partir de poços com medição completa. Cada temperatura corrigida guarda o método que a produziu.</p>
+          <p class="src">Fonte: relatórios de fim de poço e perfis do acervo da ANP</p>
         </article>
       </div>
       <div class="panel basins" data-reveal>
@@ -490,6 +507,25 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
     </div>
   </section>
 
+  <section class="block" id="fontes">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <div class="kicker">Fontes</div>
+        <h2>De onde vem cada número.</h2>
+        <p>Trabalhamos só com dados públicos e com o nosso modelo do módulo. Os links levam ao dado original.</p>
+      </div>
+      <ul class="sources">
+        <li data-reveal><b>Produção</b><a href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-fase-de-desenvolvimento-e-producao/producao-por-zona/producao_zona_08-2026.csv" target="_blank" rel="noopener">ANP · Produção por zona (ago/2026, CSV)</a><p>Água, óleo e BSW por poço e zona, mês a mês. Base do gráfico e dos números do topo.</p></li>
+        <li data-reveal><b>Produção</b><a href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos" target="_blank" rel="noopener">ANP · Portal de dados abertos</a><p>Série completa da produção por zona e os <a href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-fase-de-desenvolvimento-e-producao/producao-por-zona/metadados-producao-zona.docx" target="_blank" rel="noopener">metadados</a> de cada coluna.</p></li>
+        <li data-reveal><b>Poços</b><span>ANP · Banco de Dados de Exploração e Produção (BDEP)</span><p>Relatórios de fim de poço, perfis LAS e planilhas de poço usados na correção de temperatura.</p></li>
+        <li data-reveal><b>Rede elétrica</b><a href="https://sigel.aneel.gov.br/" target="_blank" rel="noopener">ANEEL · SIGEL</a><p>Subestações e linhas de transmissão, para a distância de cada oportunidade à rede.</p></li>
+        <li data-reveal><b>Áreas protegidas</b><a href="https://dados.mma.gov.br/dataset/unidadesdeconservacao" target="_blank" rel="noopener">ICMBio / MMA · Unidades de Conservação</a><p>Unidades de conservação federais usadas na camada territorial.</p></li>
+        <li data-reveal><b>Áreas protegidas</b><a href="https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas" target="_blank" rel="noopener">FUNAI · Terras indígenas</a><p>Limites das terras indígenas usados na mesma camada.</p></li>
+        <li data-reveal><b>Engenharia</b><span>Projeto FEED do módulo de recuperação de calor (500 kW)</span><p>Cadeia de trocadores reproduzida em código pela ResonAnza. Base do simulador.</p></li>
+      </ul>
+    </div>
+  </section>
+
   <section class="contact" id="contato">
     <div class="wrap" data-reveal>
       <div class="kicker">Contato</div>
@@ -506,7 +542,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
 <footer>
   <div class="wrap">
     <span>© 2026 ResonAnza · CNPJ 67.046.121/0001-45</span>
-    <a href="mailto:contato@resonanza.com.br">contato@resonanza.com.br</a>
+    <span><a href="#fontes">Fontes</a> · <a href="mailto:contato@resonanza.com.br">contato@resonanza.com.br</a></span>
   </div>
 </footer>
 
@@ -680,7 +716,7 @@ const fmt = (v, d = 0) => v.toLocaleString("pt-BR", { minimumFractionDigits: d, 
       svg.appendChild(el("text", { x: L - 8, y: y(v) + 4, "text-anchor": "end" }, v ? `${v / 1000} mil` : "0"));
     }
     M.forEach((m, i) => {
-      if (i % 3 === 0) svg.appendChild(el("text", { x: x(i), y: H - 8, "text-anchor": "middle" }, lbl(m)));
+      if (i % (W < 520 ? 6 : 3) === 0) svg.appendChild(el("text", { x: x(i), y: H - 8, "text-anchor": "middle" }, lbl(m)));
     });
     const gap = M.findIndex((_, i) => S[0].data[i] == null);
     if (gap >= 0) svg.appendChild(el("line", { x1: x(gap), x2: x(gap), y1: T, y2: H - B, stroke: "rgba(251,113,133,.45)", "stroke-dasharray": "3 4" }));

@@ -41,7 +41,7 @@ body::before {
   content: ""; position: fixed; inset: 0; z-index: -2;
   background:
     radial-gradient(55% 45% at 78% 18%, rgba(16, 185, 129, .17), transparent 70%),
-    radial-gradient(40% 35% at 8% 85%, rgba(245, 158, 11, .07), transparent 70%),
+    radial-gradient(45% 35% at 0% 100%, rgba(245, 158, 11, .05), transparent 70%),
     linear-gradient(var(--bg), var(--bg2));
 }
 body::after {
@@ -126,7 +126,7 @@ section.block { padding: clamp(90px, 12vw, 150px) 0 0; }
   display: inline-block; font: 500 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase;
   color: var(--gold); padding: 7px 10px; border: 1px solid rgba(251, 191, 36, .3); border-radius: 999px;
 }
-.card .ico { width: 44px; height: 44px; margin: 26px 0 18px; color: var(--em); }
+.card .ico { display: block; width: 44px; height: 44px; margin: 26px 0 18px; color: var(--em); }
 .card p { margin-top: 12px; color: var(--muted); font-size: 15.5px; }
 .basins { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 28px; color: var(--dim); font: 400 13px/1 var(--mono); }
 .chip { padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
@@ -169,9 +169,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
 
 @media (max-width: 900px) {
   .links { display: none; }
-  .hero { padding-top: 92px; }
-  .hero .wrap { grid-template-columns: 1fr; }
-  .stage { order: -1; max-width: 360px; justify-self: center; margin-bottom: 4px; }
+  .hero { min-height: auto; padding: 84px 0 56px; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 8px; }
+  .hero h1 { margin-top: 14px; }
+  .stage { order: -1; max-width: 240px; justify-self: center; }
+  .stage .caption { display: none; }
   .stats .grid, .cards, .steps, .who { grid-template-columns: 1fr; }
   .stat, .stat + .stat { padding: 26px 0; border-left: 0; }
   .stat + .stat { border-top: 1px solid var(--line); }

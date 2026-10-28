@@ -25,7 +25,7 @@
   --bg: #04140f; --bg2: #072019;
   --panel: rgba(14, 48, 38, .55); --line: rgba(110, 231, 183, .13); --line2: rgba(110, 231, 183, .28);
   --ink: #ecfdf5; --muted: #a3c4b8; --dim: #6f9486;
-  --em: #34d399; --gold: #fbbf24;
+  --em: #34d399; --gold: #fbbf24; --sky: #7dd3fc; --rose: #fb7185;
   --serif: "Instrument Serif", Georgia, serif;
   --sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -52,17 +52,21 @@ body::after {
   mask-image: radial-gradient(65% 55% at 65% 25%, #000, transparent);
 }
 a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
 .kicker { font: 500 12px/1 var(--mono); letter-spacing: .22em; text-transform: uppercase; color: var(--em); }
 h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
 h2 { font-size: clamp(34px, 4.6vw, 58px); line-height: 1.05; margin-top: 18px; }
 h3 { font: 600 20px/1.3 var(--sans); margin: 0; }
+h4 { font: 500 11px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin: 0 0 10px; }
 p { margin: 0; }
 .grad {
   font-style: italic;
   background: linear-gradient(100deg, var(--gold), var(--em));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; backdrop-filter: blur(6px); }
+.note { font: 400 12px/1.5 var(--mono); color: var(--dim); }
 
 /* Navegação */
 nav {
@@ -73,11 +77,11 @@ nav {
 nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
 .brand { display: flex; align-items: center; gap: 12px; font: 600 15px/1 var(--mono); letter-spacing: .24em; }
 .brand img { width: 34px; height: 34px; border-radius: 50%; }
-.links { display: flex; gap: 32px; font-size: 14px; color: var(--muted); }
+.links { display: flex; gap: 30px; font-size: 14px; color: var(--muted); }
 .links a:hover { color: var(--ink); }
 .btn {
   display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 999px;
-  font: 500 14px/1 var(--sans); border: 1px solid var(--line2); transition: .25s;
+  font: 500 14px/1 var(--sans); border: 1px solid var(--line2); background: none; cursor: pointer; transition: .25s;
 }
 .btn:hover { border-color: var(--em); box-shadow: 0 0 0 4px rgba(52, 211, 153, .08); }
 .btn.solid { background: linear-gradient(100deg, var(--gold), var(--em)); color: #03130d; border: 0; font-weight: 600; }
@@ -104,21 +108,18 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .stat .n { font: 400 clamp(44px, 5vw, 64px)/1 var(--serif); }
 .stat .n small { font-size: .45em; color: var(--muted); margin-left: 6px; }
 .stat p { margin-top: 12px; color: var(--muted); font-size: 15px; max-width: 30ch; }
-.source { padding: 0 0 22px; font: 400 12px/1.5 var(--mono); color: var(--dim); }
+.stats .note { padding: 0 0 22px; }
 
 /* Seções */
 section.block { padding: clamp(90px, 12vw, 150px) 0 0; }
 .head { max-width: 760px; }
-.head p { margin-top: 18px; color: var(--muted); font-size: 18px; max-width: 60ch; }
+.head p { margin-top: 18px; color: var(--muted); font-size: 18px; max-width: 62ch; }
 
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
-.card {
-  position: relative; padding: 30px 28px 32px; border-radius: 20px; background: var(--panel);
-  border: 1px solid var(--line); backdrop-filter: blur(6px); transition: .3s; overflow: hidden;
-}
+.card { position: relative; padding: 30px 28px 32px; transition: .3s; overflow: hidden; }
 .card::before {
   content: ""; position: absolute; inset: 0 0 auto 0; height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--em)); opacity: .0; transition: .3s;
+  background: linear-gradient(90deg, var(--gold), var(--em)); opacity: 0; transition: .3s;
 }
 .card:hover { border-color: var(--line2); transform: translateY(-3px); }
 .card:hover::before { opacity: 1; }
@@ -128,20 +129,85 @@ section.block { padding: clamp(90px, 12vw, 150px) 0 0; }
 }
 .card .ico { display: block; width: 44px; height: 44px; margin: 26px 0 18px; color: var(--em); }
 .card p { margin-top: 12px; color: var(--muted); font-size: 15.5px; }
-.basins { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 28px; color: var(--dim); font: 400 13px/1 var(--mono); }
-.chip { padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
 
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 56px; counter-reset: s; }
-.step { position: relative; padding: 34px 32px 0 0; border-top: 1px solid var(--line2); }
-.step + .step { padding-left: 32px; }
-.step::before {
-  content: ""; position: absolute; top: -5px; left: 0; width: 9px; height: 9px; border-radius: 50%;
-  background: var(--gold); box-shadow: 0 0 14px var(--gold);
+/* Dados: gráfico + simulador */
+.data { display: grid; grid-template-columns: 1.35fr 1fr; gap: 18px; margin-top: 56px; align-items: start; }
+.data .panel { padding: 26px 26px 22px; }
+.ptitle { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; }
+.ptitle h3 { font-size: 18px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 6px; }
+.lg {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px;
+  border: 1px solid var(--line2); background: none; cursor: pointer; font-size: 13px; color: var(--muted); transition: .2s;
 }
-.step + .step::before { left: 32px; }
-.step .num { font: 500 13px/1 var(--mono); color: var(--gold); letter-spacing: .14em; }
-.step h3 { margin-top: 14px; }
-.step p { margin-top: 12px; color: var(--muted); font-size: 15.5px; }
+.lg i { width: 10px; height: 10px; border-radius: 3px; }
+.lg.on { color: var(--ink); background: rgba(255, 255, 255, .04); }
+.lg:not(.on) { opacity: .45; }
+.chartwrap { position: relative; }
+#chart { width: 100%; height: 320px; display: block; touch-action: pan-y; }
+#chart text { font: 400 11px var(--mono); fill: var(--dim); }
+.tip {
+  position: absolute; top: 8px; pointer-events: none; min-width: 190px; padding: 12px 14px; border-radius: 12px;
+  background: rgba(3, 16, 12, .92); border: 1px solid var(--line2); font-size: 13px; line-height: 1.6; opacity: 0; transition: opacity .15s;
+}
+.tip b { font: 500 12px var(--mono); color: var(--gold); display: block; margin-bottom: 4px; }
+.tip div { display: flex; justify-content: space-between; gap: 16px; }
+.tip span:last-child { font-family: var(--mono); }
+.tip .tot { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 4px; color: var(--ink); }
+
+.sim label { display: block; margin-top: 18px; font-size: 14px; color: var(--muted); }
+.sim label strong { float: right; font: 500 14px var(--mono); color: var(--ink); }
+input[type=range] { width: 100%; margin: 10px 0 0; accent-color: var(--em); height: 24px; }
+.out { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+.out div { padding: 14px 12px; border-radius: 14px; background: rgba(4, 20, 15, .55); border: 1px solid var(--line); }
+.out .v { font: 400 30px/1 var(--serif); }
+.out .l { margin-top: 6px; font-size: 12px; color: var(--muted); line-height: 1.35; }
+.msg { margin-top: 14px; font-size: 14px; color: var(--muted); min-height: 2.6em; }
+.msg.warn { color: var(--rose); }
+#curve { width: 100%; height: 150px; display: block; margin-top: 16px; }
+#curve text { font: 400 10px var(--mono); fill: var(--dim); }
+
+/* Pipeline */
+.pipe { margin-top: 56px; padding: 30px; }
+.pnav { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; --p: 0; }
+.pnav::before, .pnav::after {
+  content: ""; position: absolute; left: 10%; right: 10%; top: 21px; height: 2px; background: var(--line2);
+}
+.pnav::after { right: auto; width: calc(80% * var(--p)); background: linear-gradient(90deg, var(--gold), var(--em)); transition: width .6s ease; }
+.pnode {
+  position: relative; z-index: 1; display: grid; justify-items: center; gap: 12px; padding: 0 4px; border: 0; background: none;
+  cursor: pointer; color: var(--muted); font-size: 15px; font-weight: 500; transition: .25s;
+}
+.pnode span {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--line2); background: var(--bg); font: 500 12px var(--mono); color: var(--dim); transition: .25s;
+}
+.pnode:hover { color: var(--ink); }
+.pnode.on { color: var(--ink); }
+.pnode.on span { border-color: var(--gold); color: #03130d; background: var(--gold); box-shadow: 0 0 22px rgba(251, 191, 36, .45); }
+.pbox { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line); }
+.pbox p { color: var(--muted); font-size: 15.5px; }
+.pbox.swap { animation: fade .45s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.pipe .note { margin-top: 22px; }
+
+/* Estudos e bacias */
+.studies { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 56px; }
+.study { padding: 26px 26px 28px; }
+.study .meta { display: flex; gap: 10px; align-items: center; font: 400 12px var(--mono); color: var(--dim); }
+.study h3 { margin-top: 14px; }
+.study p { margin-top: 10px; color: var(--muted); font-size: 15.5px; }
+.basins { margin-top: 18px; padding: 26px; display: grid; grid-template-columns: 260px 1fr; gap: 26px; align-items: start; }
+.btabs { display: grid; gap: 8px; }
+.btab {
+  display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border-radius: 14px;
+  border: 1px solid var(--line); background: none; cursor: pointer; text-align: left; transition: .2s;
+}
+.btab small { font: 400 11px var(--mono); color: var(--dim); }
+.btab.on { border-color: var(--em); background: rgba(52, 211, 153, .07); }
+.bpanel h3 { font-family: var(--serif); font-weight: 400; font-size: 38px; }
+.bpanel .st { margin-top: 10px; }
+.bpanel p { margin-top: 14px; color: var(--muted); max-width: 58ch; }
 
 .who { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
 .who div { padding: 28px 0 0; border-top: 1px solid var(--line); }
@@ -154,7 +220,7 @@ section.block { padding: clamp(90px, 12vw, 150px) 0 0; }
   font: 400 clamp(20px, 3vw, 30px)/1 var(--mono); padding-bottom: 8px; border-bottom: 1px solid var(--line2); transition: .25s;
 }
 .mail:hover { border-color: var(--em); color: var(--em); }
-.contact .note { margin-top: 18px; color: var(--dim); font-size: 14px; }
+.contact .sub { margin-top: 18px; color: var(--dim); font-size: 14px; }
 
 footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--dim); font: 400 13px/1.6 var(--mono); }
 footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
@@ -165,8 +231,14 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .pbox.swap { animation: none; }
 }
 
+@media (max-width: 980px) {
+  .data { grid-template-columns: 1fr; }
+  .basins { grid-template-columns: 1fr; }
+  .btabs { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 900px) {
   .links { display: none; }
   .hero { min-height: auto; padding: 84px 0 56px; }
@@ -174,15 +246,20 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   .hero h1 { margin-top: 14px; }
   .stage { order: -1; max-width: 240px; justify-self: center; }
   .stage .caption { display: none; }
-  .stats .grid, .cards, .steps, .who { grid-template-columns: 1fr; }
+  .stats .grid, .cards, .who, .studies { grid-template-columns: 1fr; }
   .stat, .stat + .stat { padding: 26px 0; border-left: 0; }
   .stat + .stat { border-top: 1px solid var(--line); }
-  .step, .step + .step { padding: 30px 0 34px; }
-  .step + .step::before { left: 0; }
+  .pipe { padding: 22px 16px; }
+  .pnode { font-size: 12px; }
+  .pnode span { width: 36px; height: 36px; }
+  .pnav::before, .pnav::after { top: 17px; }
+  .pbox { grid-template-columns: 1fr; gap: 14px; }
 }
 @media (max-width: 520px) {
   nav .btn { padding: 10px 14px; }
   .brand { letter-spacing: .16em; font-size: 13px; }
+  .data .panel { padding: 20px 16px 18px; }
+  .out .v { font-size: 24px; }
 }
 </style>
 <script>document.documentElement.classList.add("js")</script>
@@ -193,7 +270,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   <div class="wrap">
     <a class="brand" href="#topo"><img src="logo.png" alt="">RESONANZA</a>
     <div class="links">
-      <a href="#frentes">Frentes</a><a href="#metodo">Método</a><a href="#para-quem">Para quem</a>
+      <a href="#frentes">Frentes</a><a href="#dados">Dados</a><a href="#metodo">Método</a><a href="#estudos">Estudos</a>
     </div>
     <a class="btn" href="#contato">Fale conosco</a>
   </div>
@@ -207,8 +284,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
         <h1 data-reveal>Energia de base <span class="grad">escondida</span> nos dados do petróleo.</h1>
         <p class="lede" data-reveal>Décadas de exploração deixaram um acervo público de poços, perfis, temperaturas e produção. A ResonAnza reinterpreta esses dados para encontrar energia renovável de base em bacias sedimentares brasileiras e mostrar onde vale investir.</p>
         <div class="cta" data-reveal>
-          <a class="btn solid" href="mailto:contato@resonanza.com.br?subject=Contato%20pelo%20site">Fale conosco <span aria-hidden="true">→</span></a>
-          <a class="btn" href="#frentes">Conheça as frentes</a>
+          <a class="btn solid" href="#dados">Explore os dados <span aria-hidden="true">→</span></a>
+          <a class="btn" href="#metodo">Como funciona</a>
         </div>
       </div>
       <div class="stage" aria-hidden="true">
@@ -225,7 +302,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
         <div class="stat" data-reveal><div class="n">66 : 1</div><p>de água para cada unidade de óleo nesses mesmos campos</p></div>
         <div class="stat" data-reveal><div class="n">4<small>bacias</small></div><p>sedimentares no radar, do Nordeste à Margem Equatorial</p></div>
       </div>
-      <p class="source">Estreito, Alto do Rodrigues e Canto do Amaro · ANP, produção por zona, agosto de 2026.</p>
+      <p class="note">Estreito, Alto do Rodrigues e Canto do Amaro · ANP, produção por zona, agosto de 2026.</p>
     </div>
   </div>
 
@@ -237,28 +314,62 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
         <p>O que a indústria do petróleo mediu para encontrar óleo também descreve calor, água e território. Cada frente usa esse acervo de um jeito.</p>
       </div>
       <div class="cards">
-        <article class="card" data-reveal>
+        <article class="card panel" data-reveal>
           <span class="tag">Primeira aplicação</span>
           <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M24 6c-7 9-11 15-11 21a11 11 0 0 0 22 0c0-6-4-12-11-21Z"/><path d="M17 30c2 2 4 3 7 3s5-1 7-3" stroke="#fbbf24"/></svg>
           <h3>Calor da água produzida</h3>
           <p>Campos maduros produzem dezenas de vezes mais água que óleo, e essa água carrega calor da rocha. Um módulo na estação coletora recupera esse calor e o entrega a consumidores da região, sem mexer na produção.</p>
         </article>
-        <article class="card" data-reveal>
+        <article class="card panel" data-reveal>
           <span class="tag">Mapeamento</span>
           <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 14c7-3 13 3 20 0s13-3 20 0"/><path d="M4 24c7-3 13 3 20 0s13-3 20 0"/><path d="M4 34c7-3 13 3 20 0s13-3 20 0" stroke="#fbbf24"/><path d="M24 6v36" stroke-dasharray="2 4"/></svg>
           <h3>Geotermia sedimentar</h3>
           <p>Temperatura de fundo de poço corrigida, gradiente e litologia, poço a poço, para localizar calor de baixa e média entalpia nas bacias brasileiras.</p>
         </article>
-        <article class="card" data-reveal>
+        <article class="card panel" data-reveal>
           <span class="tag">Plataforma</span>
           <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12l12-5 12 5 12-5v29l-12 5-12-5-12 5Z"/><path d="M18 7v29M30 12v29"/><circle cx="35" cy="20" r="3" stroke="#fbbf24"/></svg>
           <h3>Inteligência territorial</h3>
           <p>Ranking de oportunidades com distância à rede, áreas protegidas e logística. Mapas, relatórios e API para quem decide onde investir.</p>
         </article>
       </div>
-      <div class="basins" data-reveal>
-        <span>No radar</span>
-        <span class="chip">Potiguar</span><span class="chip">Campos</span><span class="chip">Recôncavo</span><span class="chip">Foz do Amazonas</span>
+    </div>
+  </section>
+
+  <section class="block" id="dados">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <div class="kicker">Dados</div>
+        <h2>O que os dados públicos já mostram.</h2>
+        <p>Dois recortes do nosso trabalho: a água que três campos maduros produzem mês a mês, e quanto calor um módulo consegue tirar dela conforme a temperatura de chegada.</p>
+      </div>
+      <div class="data">
+        <div class="panel" data-reveal>
+          <div class="ptitle"><h3>Água produzida, m³/dia</h3><span class="note">jan/2025 – ago/2026</span></div>
+          <div class="legend" id="legend"></div>
+          <div class="chartwrap">
+            <svg id="chart" role="img" aria-label="Água produzida por campo, empilhada, de janeiro de 2025 a agosto de 2026"></svg>
+            <div class="tip" id="tip"></div>
+          </div>
+          <p class="note">Fonte: ANP, produção por zona, somada por campo. Março de 2026 não foi publicado. Toque ou passe o cursor sobre o gráfico.</p>
+        </div>
+        <div class="panel sim" data-reveal>
+          <div class="ptitle"><h3>Simulador do módulo</h3><span class="note">500 kW por módulo</span></div>
+          <label>Temperatura da água na chegada <strong id="tv"></strong>
+            <input id="simT" type="range" min="45" max="70" step="0.1" value="55" aria-label="Temperatura da água na chegada">
+          </label>
+          <label>Vazão de água disponível <strong id="qv"></strong>
+            <input id="simQ" type="range" min="0" max="1000" step="1" value="434" aria-label="Vazão de água disponível">
+          </label>
+          <div class="out">
+            <div><div class="v" id="oMin">—</div><div class="l">m³/dia mínimos por módulo</div></div>
+            <div><div class="v" id="oMod">—</div><div class="l">módulos que a vazão sustenta</div></div>
+            <div><div class="v" id="oMW">—</div><div class="l">MW térmicos em módulos inteiros</div></div>
+          </div>
+          <p class="msg" id="oMsg"></p>
+          <svg id="curve" aria-hidden="true"></svg>
+          <p class="note">Aproximação a partir do modelo do módulo (projeto FEED). Não substitui estudo de viabilidade nem medição em campo.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -267,24 +378,48 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
     <div class="wrap">
       <div class="head" data-reveal>
         <div class="kicker">Método</div>
-        <h2>Do dado público à decisão.</h2>
+        <h2>Do dado público à decisão, em cinco etapas.</h2>
+        <p>Clique em cada etapa para ver o que entra, o que fazemos e o que sai.</p>
       </div>
-      <div class="steps">
-        <div class="step" data-reveal>
-          <div class="num">01</div>
-          <h3>Dados públicos</h3>
-          <p>Relatórios de fim de poço, perfis LAS, planilhas do BDEP e produção mensal por zona da ANP, extraídos com IA e conferidos campo a campo.</p>
-        </div>
-        <div class="step" data-reveal>
-          <div class="num">02</div>
-          <h3>Correção e modelo</h3>
-          <p>Temperatura de fundo corrigida (Horner e métodos paramétricos), coeficientes calibrados por formação e modelo térmico do módulo de recuperação de calor.</p>
-        </div>
-        <div class="step" data-reveal>
-          <div class="num">03</div>
-          <h3>Decisão</h3>
-          <p>Ranking por poço e por zona, mapa por bacia e estudo de viabilidade em fases, cada uma com critério claro para seguir.</p>
-        </div>
+      <div class="panel pipe" data-reveal>
+        <div class="pnav" id="pnav" role="tablist" aria-label="Etapas do método"></div>
+        <div class="pbox" id="pbox" role="tabpanel" aria-live="polite"></div>
+        <p class="note">Cada número carrega a fonte e o método. Dado ausente continua ausente, nunca vira um zero que parece medição.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="estudos">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <div class="kicker">Estudos</div>
+        <h2>Trabalho feito, não promessa.</h2>
+      </div>
+      <div class="studies">
+        <article class="panel study" data-reveal>
+          <div class="meta"><span class="tag">Potiguar</span>out/2026</div>
+          <h3>Série de produção por campo</h3>
+          <p>Água, óleo e BSW mês a mês a partir da produção por zona da ANP, com os meses sem publicação marcados como ausentes. Mais de 98% do que sai dos poços analisados é água.</p>
+        </article>
+        <article class="panel study" data-reveal>
+          <div class="meta"><span class="tag">Potiguar</span>out/2026</div>
+          <h3>Zonas produtoras e profundidade</h3>
+          <p>Cruzamento de zona, cota e completação para estimar a temperatura de cada zona produtora e separar o calor que vem da geologia do que depende da operação.</p>
+        </article>
+        <article class="panel study" data-reveal>
+          <div class="meta"><span class="tag">Engenharia</span>out/2026</div>
+          <h3>Modelo do módulo de recuperação de calor</h3>
+          <p>A cadeia de trocadores de um projeto FEED reproduzida em código: vazão mínima em função da temperatura de entrada e o piso abaixo do qual o módulo não fecha a carga.</p>
+        </article>
+        <article class="panel study" data-reveal>
+          <div class="meta"><span class="tag">Dados</span>2026</div>
+          <h3>Correção de temperatura de fundo de poço</h3>
+          <p>Cascata de métodos de correção com calibração por formação a partir de poços com medição completa. Cada temperatura corrigida guarda o método que a produziu.</p>
+        </article>
+      </div>
+      <div class="panel basins" data-reveal>
+        <div class="btabs" id="btabs" role="tablist" aria-label="Bacias"></div>
+        <div class="bpanel" id="bpanel" role="tabpanel" aria-live="polite"></div>
       </div>
     </div>
   </section>
@@ -308,7 +443,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
       <div class="kicker">Contato</div>
       <h2>Vamos conversar sobre <span class="grad">o seu ativo</span>.</h2>
       <a class="mail" href="mailto:contato@resonanza.com.br?subject=Contato%20pelo%20site">contato@resonanza.com.br <span aria-hidden="true">→</span></a>
-      <p class="note">Respondemos em até um dia útil.</p>
+      <p class="sub">Respondemos em até um dia útil.</p>
     </div>
   </section>
 </main>
@@ -321,17 +456,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
 </footer>
 
 <script>
+const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fmt = (v, d = 0) => v.toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d });
+
 // Campo girante trifásico: três dipolos a 120°, linhas acendendo em sequência de fase.
 (() => {
   const cv = document.getElementById("field");
   const ctx = cv.getContext("2d");
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const LEVELS = [0.2, 0.3, 0.4];
   const PHIS = [0, Math.PI / 3, (2 * Math.PI) / 3];
   const GOLD = [251, 191, 36], EM = [52, 211, 153];
   const N = 260;
   let W = 0, H = 0, dpr = 1, unit = 0, paths = [], parts = [], raf = 0, visible = true, last = 0, t = 0;
-
   const mix = (a, b, k) => a.map((v, i) => Math.round(v + (b[i] - v) * k)).join(",");
 
   function build() {
@@ -419,7 +555,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   }
 
   build();
-  if (reduce) {
+  if (REDUCE) {
     frame(0);
     addEventListener("resize", () => { build(); frame(0); });
     return;
@@ -430,6 +566,265 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
     if (visible && !raf) { last = 0; raf = requestAnimationFrame(loop); }
   }).observe(cv);
   raf = requestAnimationFrame(loop);
+})();
+
+// Água produzida por campo (ANP, produção por zona). null = mês não publicado.
+(() => {
+  const M = ["2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12",
+             "2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07","2026-08"];
+  const S = [
+    { name: "Canto do Amaro", color: "#34d399", data: [52079,52910,54749,54052,54420,57026,56268,54518,50963,45014,46842,48028,48219,47967,null,46096,48640,49404,47706,49040] },
+    { name: "Estreito", color: "#fbbf24", data: [34230,37078,37689,39365,40350,40257,40306,39782,38551,38645,38322,38228,38291,38158,null,38033,39329,41480,40730,40909] },
+    { name: "Alto do Rodrigues", color: "#7dd3fc", data: [17257,17275,17348,17802,17766,17675,17720,17918,18290,18196,18011,17785,17645,17426,null,17072,17001,17286,17590,17288] },
+  ];
+  const MES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+  const lbl = (m) => `${MES[+m.slice(5) - 1]}/${m.slice(2, 4)}`;
+  const svg = document.getElementById("chart");
+  const tip = document.getElementById("tip");
+  const legend = document.getElementById("legend");
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs, text) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    return e;
+  };
+  let geo = null, hoverLine = null;
+
+  S.forEach((s) => {
+    s.on = true;
+    const b = document.createElement("button");
+    b.className = "lg on";
+    b.type = "button";
+    b.setAttribute("aria-pressed", "true");
+    b.innerHTML = `<i style="background:${s.color}"></i>${s.name}`;
+    b.onclick = () => {
+      if (s.on && S.filter((x) => x.on).length === 1) return;
+      s.on = !s.on;
+      b.classList.toggle("on", s.on);
+      b.setAttribute("aria-pressed", String(s.on));
+      draw();
+    };
+    legend.appendChild(b);
+  });
+
+  function draw() {
+    const W = Math.max(280, svg.clientWidth), H = 320, L = 52, R = 10, T = 14, B = 30;
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    svg.innerHTML = "";
+    const vis = S.filter((s) => s.on);
+    const tot = M.map((_, i) => vis.reduce((a, s) => (s.data[i] == null ? a : a + s.data[i]), 0));
+    const step = 20000;
+    const maxV = Math.max(step, Math.ceil(Math.max(...tot) / step) * step);
+    const x = (i) => L + (i * (W - L - R)) / (M.length - 1);
+    const y = (v) => T + (H - T - B) * (1 - v / maxV);
+    for (let v = 0; v <= maxV; v += step) {
+      svg.appendChild(el("line", { x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: "rgba(110,231,183,.12)" }));
+      svg.appendChild(el("text", { x: L - 8, y: y(v) + 4, "text-anchor": "end" }, v ? `${v / 1000} mil` : "0"));
+    }
+    M.forEach((m, i) => {
+      if (i % 3 === 0 || i === M.length - 1) svg.appendChild(el("text", { x: x(i), y: H - 8, "text-anchor": "middle" }, lbl(m)));
+    });
+    const gap = M.findIndex((_, i) => S[0].data[i] == null);
+    if (gap >= 0) svg.appendChild(el("line", { x1: x(gap), x2: x(gap), y1: T, y2: H - B, stroke: "rgba(251,113,133,.45)", "stroke-dasharray": "3 4" }));
+
+    let base = M.map(() => 0);
+    vis.forEach((s) => {
+      const top = M.map((_, i) => (s.data[i] == null ? null : base[i] + s.data[i]));
+      const segs = [];
+      let seg = [];
+      M.forEach((_, i) => {
+        if (top[i] == null) { if (seg.length) segs.push(seg); seg = []; } else seg.push(i);
+      });
+      if (seg.length) segs.push(seg);
+      segs.forEach((sg) => {
+        const upper = sg.map((i, k) => `${k ? "L" : "M"}${x(i)},${y(top[i])}`).join("");
+        const lower = sg.slice().reverse().map((i) => `L${x(i)},${y(base[i])}`).join("");
+        svg.appendChild(el("path", { d: upper + lower + "Z", fill: s.color, "fill-opacity": ".2" }));
+        svg.appendChild(el("path", { d: upper, fill: "none", stroke: s.color, "stroke-width": 2, "stroke-linejoin": "round" }));
+      });
+      base = base.map((b, i) => (top[i] == null ? b : top[i]));
+    });
+    hoverLine = el("line", { y1: T, y2: H - B, stroke: "rgba(236,253,245,.5)", opacity: 0 });
+    svg.appendChild(hoverLine);
+    geo = { W, L, R, x, vis };
+  }
+
+  function show(clientX) {
+    if (!geo) return;
+    const r = svg.getBoundingClientRect();
+    const px = ((clientX - r.left) / r.width) * geo.W;
+    const i = Math.max(0, Math.min(M.length - 1, Math.round(((px - geo.L) / (geo.W - geo.L - geo.R)) * (M.length - 1))));
+    const xi = geo.x(i);
+    hoverLine.setAttribute("x1", xi);
+    hoverLine.setAttribute("x2", xi);
+    hoverLine.setAttribute("opacity", 1);
+    const missing = geo.vis[0].data[i] == null;
+    let html = `<b>${lbl(M[i])}</b>`;
+    if (missing) html += `<div><span>Mês não publicado pela ANP</span></div>`;
+    else {
+      let total = 0;
+      geo.vis.forEach((s) => { total += s.data[i]; html += `<div><span>${s.name}</span><span>${fmt(s.data[i])}</span></div>`; });
+      html += `<div class="tot"><span>Total</span><span>${fmt(total)}</span></div>`;
+    }
+    tip.innerHTML = html;
+    const left = (xi / geo.W) * r.width;
+    const tw = tip.offsetWidth || 200;
+    tip.style.left = `${left + 14 + tw > r.width ? left - tw - 14 : left + 14}px`;
+    tip.style.opacity = 1;
+  }
+  function hide() { tip.style.opacity = 0; if (hoverLine) hoverLine.setAttribute("opacity", 0); }
+  svg.addEventListener("pointermove", (e) => show(e.clientX));
+  svg.addEventListener("pointerdown", (e) => show(e.clientX));
+  svg.addEventListener("pointerleave", hide);
+  new ResizeObserver(draw).observe(svg);
+  draw();
+})();
+
+// Simulador do módulo: vazão mínima por módulo de 500 kW em função da temperatura de chegada.
+(() => {
+  const PTS = [[50, 4055], [52, 1652], [55, 933], [60, 575], [70, 349]];
+  const FLOOR = 48.8;
+  const $ = (id) => document.getElementById(id);
+  const sT = $("simT"), sQ = $("simQ"), curve = $("curve");
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs, text) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    return e;
+  };
+  const flowFrom = (s) => Math.round((500 * Math.pow(120, s / 1000)) / 10) * 10;
+
+  function minFlow(T) {
+    if (T < FLOOR) return Infinity;
+    if (T < PTS[0][0]) return NaN;
+    for (let i = 0; i < PTS.length - 1; i++) {
+      const [t0, q0] = PTS[i], [t1, q1] = PTS[i + 1];
+      if (T <= t1) {
+        const f = (T - t0) / (t1 - t0);
+        return Math.exp(Math.log(q0) + f * (Math.log(q1) - Math.log(q0)));
+      }
+    }
+    return PTS[PTS.length - 1][1];
+  }
+
+  function drawCurve(T) {
+    const W = Math.max(260, curve.clientWidth), H = 150, L = 40, R = 8, Tp = 8, B = 22;
+    curve.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    curve.innerHTML = "";
+    const x = (t) => L + ((t - 45) / 25) * (W - L - R);
+    const ly = (q) => Tp + (H - Tp - B) * (1 - (Math.log(q) - Math.log(300)) / (Math.log(6000) - Math.log(300)));
+    curve.appendChild(el("rect", { x: x(45), y: Tp, width: x(FLOOR) - x(45), height: H - Tp - B, fill: "rgba(251,113,133,.12)" }));
+    curve.appendChild(el("text", { x: (x(45) + x(FLOOR)) / 2, y: Tp + 14, "text-anchor": "middle" }, "sem módulo"));
+    [300, 1000, 3000].forEach((q) => {
+      curve.appendChild(el("line", { x1: L, x2: W - R, y1: ly(q), y2: ly(q), stroke: "rgba(110,231,183,.12)" }));
+      curve.appendChild(el("text", { x: L - 6, y: ly(q) + 3, "text-anchor": "end" }, q >= 1000 ? `${q / 1000} mil` : q));
+    });
+    [45, 50, 55, 60, 65, 70].forEach((t) => curve.appendChild(el("text", { x: x(t), y: H - 6, "text-anchor": "middle" }, `${t} °C`)));
+    let d = "";
+    for (let t = 50; t <= 70.001; t += 0.25) d += `${d ? "L" : "M"}${x(t)},${ly(minFlow(t))}`;
+    curve.appendChild(el("path", { d, fill: "none", stroke: "#34d399", "stroke-width": 2 }));
+    curve.appendChild(el("line", { x1: x(T), x2: x(T), y1: Tp, y2: H - B, stroke: "rgba(251,191,36,.6)", "stroke-dasharray": "3 3" }));
+    const m = minFlow(T);
+    if (Number.isFinite(m)) curve.appendChild(el("circle", { cx: x(T), cy: ly(m), r: 5, fill: "#fbbf24" }));
+  }
+
+  function update() {
+    const T = +sT.value, Q = flowFrom(+sQ.value), m = minFlow(T);
+    $("tv").textContent = `${fmt(T, 1)} °C`;
+    $("qv").textContent = `${fmt(Q)} m³/dia`;
+    const msg = $("oMsg");
+    msg.classList.remove("warn");
+    if (m === Infinity) {
+      $("oMin").textContent = "—"; $("oMod").textContent = "0"; $("oMW").textContent = "0";
+      msg.textContent = "Abaixo do piso térmico do módulo: nenhuma vazão fecha a carga.";
+      msg.classList.add("warn");
+    } else if (Number.isNaN(m)) {
+      $("oMin").textContent = "—"; $("oMod").textContent = "?"; $("oMW").textContent = "?";
+      msg.textContent = "Logo acima do piso: a vazão necessária cresce muito rápido. Aqui só a medição decide.";
+      msg.classList.add("warn");
+    } else {
+      const n = Q / m;
+      $("oMin").textContent = fmt(m);
+      $("oMod").textContent = n < 1 ? "< 1" : fmt(n, 1);
+      $("oMW").textContent = fmt(Math.floor(n) * 0.5, 1);
+      msg.textContent = n < 1
+        ? "A vazão não chega a sustentar um módulo inteiro nessa temperatura."
+        : `Cada grau a mais reduz a vazão que um módulo precisa. A ${fmt(T, 1)} °C, esta vazão sustenta ${fmt(Math.floor(n))} módulo${Math.floor(n) > 1 ? "s" : ""}.`;
+    }
+    drawCurve(T);
+  }
+  sT.addEventListener("input", update);
+  sQ.addEventListener("input", update);
+  new ResizeObserver(() => drawCurve(+sT.value)).observe(curve);
+  update();
+})();
+
+// Método em cinco etapas.
+(() => {
+  const STEPS = [
+    { t: "Coleta", i: "Relatórios de fim de poço em PDF, perfis LAS, planilhas do BDEP e produção mensal por zona.", d: "Reunimos o acervo público da ANP e organizamos por bacia, campo e poço.", o: "Acervo bruto rastreável, com a origem de cada arquivo." },
+    { t: "Extração", i: "Documentos em formatos e unidades diferentes, escritos ao longo de décadas.", d: "IA lê os relatórios; cada campo é conferido, as unidades são convertidas e as fontes são cruzadas por ordem de confiança.", o: "Um registro por poço. Dado ausente continua ausente." },
+    { t: "Correção", i: "Temperaturas de fundo medidas durante a perfuração, ainda frias pela circulação da lama.", d: "Corrigimos esse resfriamento com o método adequado a cada poço e calibração por formação.", o: "Temperatura estimada da formação, com o método registrado." },
+    { t: "Modelo", i: "Temperaturas corrigidas, profundidade das zonas e vazão de água de cada campo.", d: "Gradiente, perda de calor no poço e na linha e modelo térmico do módulo de recuperação.", o: "Temperatura na estação e quantos módulos cada ativo sustenta." },
+    { t: "Decisão", i: "Resultado técnico, rede elétrica, áreas protegidas e logística.", d: "Ranking por poço e por zona, mapa por bacia e estudo de viabilidade em fases.", o: "Onde investir, o que evitar e o próximo passo, com critério claro." },
+  ];
+  const nav = document.getElementById("pnav"), box = document.getElementById("pbox");
+  let cur = 0, timer = null;
+  STEPS.forEach((s, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "pnode";
+    b.setAttribute("role", "tab");
+    b.innerHTML = `<span>${String(i + 1).padStart(2, "0")}</span>${s.t}`;
+    b.onclick = () => { stop(); show(i); };
+    nav.appendChild(b);
+  });
+  function show(i) {
+    cur = i;
+    [...nav.children].forEach((b, k) => { b.classList.toggle("on", k === i); b.setAttribute("aria-selected", String(k === i)); });
+    nav.style.setProperty("--p", i / (STEPS.length - 1));
+    const s = STEPS[i];
+    box.innerHTML = `<div><h4>Entra</h4><p>${s.i}</p></div><div><h4>O que fazemos</h4><p>${s.d}</p></div><div><h4>Sai</h4><p>${s.o}</p></div>`;
+    box.classList.remove("swap");
+    void box.offsetWidth;
+    box.classList.add("swap");
+  }
+  function stop() { clearInterval(timer); timer = null; }
+  show(0);
+  if (!REDUCE) {
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && timer === null && cur === 0) timer = setInterval(() => show((cur + 1) % STEPS.length), 5000);
+      if (!e.isIntersecting) stop();
+    }).observe(nav);
+  }
+})();
+
+// Bacias no radar.
+(() => {
+  const B = [
+    { n: "Potiguar", uf: "RN · CE", st: "Em análise", d: "Produção por zona, poços e zonas produtoras de campos maduros em terra. É onde está a primeira aplicação de calor da água produzida." },
+    { n: "Recôncavo", uf: "BA", st: "No radar", d: "Campos maduros em terra, com décadas de produção e um acervo público de poços para ler pela ótica do calor." },
+    { n: "Campos", uf: "RJ · ES", st: "No radar", d: "Acervo extenso de poços com temperatura de fundo e perfis, base para mapear gradiente e calor em profundidade." },
+    { n: "Foz do Amazonas", uf: "AP · PA", st: "Mapeamento", d: "Poços exploratórios da Margem Equatorial cruzados com a rede elétrica e com as áreas protegidas da região." },
+  ];
+  const tabs = document.getElementById("btabs"), panel = document.getElementById("bpanel");
+  B.forEach((b, i) => {
+    const t = document.createElement("button");
+    t.type = "button";
+    t.className = "btab";
+    t.setAttribute("role", "tab");
+    t.innerHTML = `<span>${b.n}</span><small>${b.uf}</small>`;
+    t.onclick = () => show(i);
+    tabs.appendChild(t);
+  });
+  function show(i) {
+    [...tabs.children].forEach((t, k) => { t.classList.toggle("on", k === i); t.setAttribute("aria-selected", String(k === i)); });
+    const b = B[i];
+    panel.innerHTML = `<div class="kicker">Bacia</div><h3>${b.n}</h3><div class="st"><span class="tag">${b.st}</span></div><p>${b.d}</p>`;
+  }
+  show(0);
 })();
 
 // Entrada suave dos blocos ao rolar.

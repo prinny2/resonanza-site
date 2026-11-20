@@ -3,23 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ResonAnza · Inteligência territorial energética</title>
-<meta name="description" content="Reinterpretamos dados públicos da ANP para encontrar energia renovável de base em bacias sedimentares brasileiras.">
+<title>ResonAnza · Qualidade da água onde o dado não chega</title>
+<meta name="description" content="Protocolo de calibração para a água de cacimbas e poços rasos no Pará: agentes comunitários, kits de baixo custo, frasco rastreável, referência de laboratório e correção estatística do erro do kit.">
 <meta name="theme-color" content="#04140f">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://resonanza.com.br/">
-<meta property="og:title" content="ResonAnza · Inteligência territorial energética">
-<meta property="og:description" content="Dados que o petróleo já pagou, a serviço da energia renovável de base.">
-<meta property="og:image" content="https://resonanza.com.br/og.jpg">
+<meta property="og:site_name" content="ResonAnza">
+<meta property="og:title" content="ResonAnza · Qualidade da água onde o dado não chega">
+<meta property="og:description" content="Agente comunitário, kit de baixo custo, frasco rastreável, referência de laboratório e correção estatística do erro do kit, para a água de cacimbas e poços rasos no Pará.">
+<meta property="og:image" content="https://resonanza.com.br/og.jpg?v=agua">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="675">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ResonAnza · Qualidade da água onde o dado não chega">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ResonAnza · Qualidade da água onde o dado não chega">
+<meta name="twitter:description" content="Protocolo de calibração para a água de cacimbas e poços rasos no Pará: agentes comunitários, kits de baixo custo e referência de laboratório.">
+<meta name="twitter:image" content="https://resonanza.com.br/og.jpg?v=agua">
 <link rel="canonical" href="https://resonanza.com.br/">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"ResonAnza","url":"https://resonanza.com.br/","logo":"https://resonanza.com.br/logo.png","email":"contato@resonanza.com.br","taxID":"67.046.121/0001-45","description":"Inteligência territorial energética: dados públicos da ANP reinterpretados para encontrar energia renovável de base em bacias sedimentares brasileiras.","contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"contato@resonanza.com.br","telephone":"+55-91-98515-6690","availableLanguage":["pt-BR","en"]}}
+{"@context":"https://schema.org","@type":"Organization","name":"ResonAnza","url":"https://resonanza.com.br/","logo":"https://resonanza.com.br/logo.png","email":"contato@resonanza.com.br","taxID":"67.046.121/0001-45","description":"Protocolo de calibração estatística para a qualidade da água de cacimbas e poços rasos no Pará: agentes comunitários, kits de baixo custo, frasco rastreável, referência de laboratório e correção do erro do kit.","address":{"@type":"PostalAddress","addressLocality":"Belém","addressRegion":"PA","addressCountry":"BR"},"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"contato@resonanza.com.br","telephone":"+55-91-99287-5776","availableLanguage":["pt-BR"]}}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,13 +101,12 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .hero .wrap { display: grid; grid-template-columns: 1.08fr 1fr; gap: 40px; align-items: center; }
 .hero h1 { font-size: clamp(46px, 6.4vw, 92px); line-height: .98; margin-top: 22px; }
 .hero .lede { margin-top: 26px; max-width: 56ch; color: var(--muted); font-size: 18.5px; }
+.hero .lede + .lede { margin-top: 14px; }
+.hero .lede strong { color: var(--ink); font-weight: 500; }
 .cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 36px; }
+.hero .note { margin-top: 22px; }
 .stage { position: relative; aspect-ratio: 1; width: 100%; max-width: 580px; justify-self: end; }
 .stage canvas { width: 100%; height: 100%; display: block; }
-.stage .caption {
-  position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%); white-space: nowrap;
-  font: 400 11px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--dim);
-}
 
 /* Números */
 .stats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(4, 20, 15, .4); }
@@ -111,7 +115,7 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .stat + .stat { padding-left: 28px; border-left: 1px solid var(--line); }
 .stat .n { font: 400 clamp(44px, 5vw, 64px)/1 var(--serif); }
 .stat .n small { font-size: .45em; color: var(--muted); margin-left: 6px; }
-.stat p { margin-top: 12px; color: var(--muted); font-size: 15px; max-width: 30ch; }
+.stat p { margin-top: 12px; color: var(--muted); font-size: 15px; max-width: 32ch; }
 .stats .note { padding: 0 0 22px; }
 
 /* Seções */
@@ -131,47 +135,44 @@ section.block { padding: clamp(90px, 12vw, 150px) 0 0; }
   display: inline-block; font: 500 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase;
   color: var(--gold); padding: 7px 10px; border: 1px solid rgba(251, 191, 36, .3); border-radius: 999px;
 }
+.tag.lc { text-transform: none; letter-spacing: .04em; font-size: 12px; }
 .card .ico { display: block; width: 44px; height: 44px; margin: 26px 0 18px; color: var(--em); }
 .card p { margin-top: 12px; color: var(--muted); font-size: 15.5px; }
+.sub3 { margin-top: 72px; font: 400 clamp(26px, 3vw, 36px)/1.15 var(--serif); text-wrap: balance; }
+.sub3 + .cards { margin-top: 28px; }
+.closing { margin-top: 44px; max-width: 48ch; font: 400 clamp(22px, 2.4vw, 30px)/1.3 var(--serif); color: var(--ink); text-wrap: balance; }
 
-/* Dados: gráfico + simulador */
+/* Dados: barras por região e municípios */
 .data { display: grid; grid-template-columns: 1.35fr 1fr; gap: 18px; margin-top: 56px; align-items: start; }
 .data .panel { padding: 26px 26px 22px; }
 .ptitle { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; }
 .ptitle h3 { font-size: 18px; }
-.legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 6px; }
-.lg {
-  display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px;
-  border: 1px solid var(--line2); background: none; cursor: pointer; font-size: 13px; color: var(--muted); transition: .2s;
+.data .panel > p { margin-top: 12px; color: var(--muted); font-size: 15px; }
+.bars { display: grid; gap: 16px; margin: 22px 0 18px; }
+.bar .bl { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 15px; }
+.bar .bl b { font: 500 15px var(--mono); white-space: nowrap; }
+.track { position: relative; height: 12px; margin-top: 8px; border-radius: 6px; background: rgba(110, 231, 183, .07); }
+.track .fill {
+  position: absolute; left: 0; top: 0; bottom: 0; border-radius: 6px;
+  width: calc(var(--c) / var(--scale) * 100%);
+  background: linear-gradient(90deg, rgba(251, 191, 36, .85), rgba(52, 211, 153, .85));
 }
-.lg i { width: 10px; height: 10px; border-radius: 3px; }
-.lg.on { color: var(--ink); background: rgba(255, 255, 255, .04); }
-.lg:not(.on) { opacity: .45; }
-.chartwrap { position: relative; }
-#chart { width: 100%; height: 320px; display: block; touch-action: pan-y; }
-#chart text { font: 400 11px var(--mono); fill: var(--dim); }
-.tip {
-  position: absolute; top: 8px; pointer-events: none; min-width: 190px; padding: 12px 14px; border-radius: 12px;
-  background: rgba(3, 16, 12, .92); border: 1px solid var(--line2); font-size: 13px; line-height: 1.6; opacity: 0; transition: opacity .15s;
+.track .rng {
+  position: absolute; top: 50%; height: 2px; margin-top: -1px; background: var(--ink); opacity: .6;
+  left: calc(var(--min) / var(--scale) * 100%); width: calc((var(--max) - var(--min)) / var(--scale) * 100%);
 }
-.tip b { font: 500 12px var(--mono); color: var(--gold); display: block; margin-bottom: 4px; }
-.tip div { display: flex; justify-content: space-between; gap: 16px; }
-.tip span:last-child { font-family: var(--mono); }
-.tip .tot { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 4px; color: var(--ink); }
+.track .rng::before, .track .rng::after { content: ""; position: absolute; top: -5px; width: 2px; height: 12px; background: var(--ink); }
+.track .rng::before { left: 0; }
+.track .rng::after { right: 0; }
+.bar .bs { margin-top: 6px; font: 400 12px/1.4 var(--mono); color: var(--dim); }
+.total { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 0 16px; border-top: 1px solid var(--line); font-size: 15px; }
+.total b { font: 500 15px var(--mono); }
+.key { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 12px; font: 400 12px var(--mono); color: var(--dim); }
+.key i { display: inline-block; vertical-align: middle; margin-right: 8px; }
+.key .kf { width: 18px; height: 10px; border-radius: 3px; background: linear-gradient(90deg, var(--gold), var(--em)); }
+.key .kr { width: 18px; height: 2px; background: var(--ink); opacity: .6; }
 
-.sim label { display: block; margin-top: 18px; font-size: 14px; color: var(--muted); }
-.sim label strong { float: right; font: 500 14px var(--mono); color: var(--ink); }
-input[type=range] { width: 100%; margin: 10px 0 0; accent-color: var(--em); height: 30px; cursor: pointer; }
-.out { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
-.out > div { padding: 14px 12px; border-radius: 14px; background: rgba(4, 20, 15, .55); border: 1px solid var(--line); }
-.out .v { font: 400 30px/1 var(--serif); }
-.out .l { margin-top: 6px; font-size: 12px; color: var(--muted); line-height: 1.35; }
-.msg { margin-top: 14px; font-size: 14px; color: var(--muted); min-height: 2.6em; }
-.msg.warn { color: var(--rose); }
-#curve { width: 100%; height: 150px; display: block; margin-top: 16px; }
-#curve text { font: 400 10px var(--mono); fill: var(--dim); }
-
-/* Pipeline */
+/* Protocolo em etapas */
 .pipe { margin-top: 56px; padding: 30px; }
 .pnav { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; --p: 0; }
 .pnav::before, .pnav::after {
@@ -194,28 +195,31 @@ input[type=range] { width: 100%; margin: 10px 0 0; accent-color: var(--em); heig
 .pbox.swap { animation: fade .45s ease; }
 @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 .pipe .note { margin-top: 22px; }
+.pilot { margin-top: 18px; }
+.pilot .pbox { margin-top: 22px; }
 
-/* Estudos e bacias */
+/* Responsabilidade */
+.resp { margin-top: 18px; padding: 24px 26px; display: flex; gap: 18px; align-items: flex-start; border-color: rgba(251, 191, 36, .3); }
+.resp svg { flex: none; width: 34px; height: 34px; color: var(--gold); }
+.resp p { color: var(--muted); font-size: 15.5px; }
+.resp strong { color: var(--ink); font-weight: 600; }
+
+/* Evidência */
 .studies { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 56px; }
 .study { padding: 26px 26px 28px; }
-.study .meta { display: flex; gap: 10px; align-items: center; font: 400 12px var(--mono); color: var(--dim); }
+.study .meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font: 400 12px var(--mono); color: var(--dim); }
 .study h3 { margin-top: 14px; }
 .study p { margin-top: 10px; color: var(--muted); font-size: 15.5px; }
-.basins { margin-top: 18px; padding: 26px; display: grid; grid-template-columns: 260px 1fr; gap: 26px; align-items: start; }
-.btabs { display: grid; gap: 8px; }
-.btab {
-  display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border-radius: 14px;
-  border: 1px solid var(--line); background: none; cursor: pointer; text-align: left; transition: .2s;
-}
-.btab small { font: 400 11px var(--mono); color: var(--dim); }
-.btab.on { border-color: var(--em); background: rgba(52, 211, 153, .07); }
-.bpanel h3 { font-family: var(--serif); font-weight: 400; font-size: 38px; }
-.bpanel .st { margin-top: 10px; }
-.bpanel p { margin-top: 14px; color: var(--muted); max-width: 58ch; }
+.study .src { margin-top: 16px; font: 400 12px/1.5 var(--mono); color: var(--dim); }
 
 .who { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
 .who div { padding: 28px 0 0; border-top: 1px solid var(--line); }
 .who p { margin-top: 10px; color: var(--muted); font-size: 15.5px; }
+
+/* Origem */
+.origin { padding: clamp(26px, 4vw, 44px); display: grid; grid-template-columns: 1fr 1.2fr; gap: 18px 40px; align-items: center; }
+.origin h2 { font-size: clamp(30px, 3.4vw, 44px); }
+.origin p { color: var(--muted); font-size: 17px; }
 
 .contact { padding: clamp(110px, 14vw, 170px) 0 clamp(80px, 10vw, 120px); text-align: center; }
 .contact h2 { font-size: clamp(40px, 6vw, 80px); }
@@ -232,20 +236,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
 /* Fontes */
 .note a, .sources a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--line2); text-underline-offset: 3px; }
 .note a:hover, .sources a:hover { color: var(--em); text-decoration-color: var(--em); }
-.study .src { margin-top: 16px; font: 400 12px/1.5 var(--mono); color: var(--dim); }
 .sources { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; }
 .sources li { padding: 18px 0; border-top: 1px solid var(--line); }
 .sources b { display: block; font: 500 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
 .sources li > a, .sources li > span { display: inline-block; margin-top: 6px; font-size: 15.5px; }
 .sources p { margin-top: 4px; font-size: 14px; color: var(--dim); }
-
-/* Fases */
-.phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
-.phase { padding: 26px 24px 26px; display: flex; flex-direction: column; }
-.phase .num { font: 400 46px/1 var(--serif); color: var(--gold); }
-.phase h3 { margin-top: 14px; }
-.phase p { margin-top: 10px; color: var(--muted); font-size: 15px; flex: 1; }
-.phase .gate { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); font: 400 12px/1.5 var(--mono); color: var(--em); }
 
 /* WhatsApp */
 .wa {
@@ -271,8 +266,6 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
 
 @media (max-width: 980px) {
   .data { grid-template-columns: 1fr; }
-  .basins { grid-template-columns: 1fr; }
-  .btabs { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 900px) {
   .links { display: none; }
@@ -280,9 +273,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   .hero .wrap { grid-template-columns: 1fr; gap: 8px; }
   .hero h1 { margin-top: 14px; }
   .stage { order: -1; max-width: 240px; justify-self: center; }
-  .stage .caption { display: none; }
-  .stats .grid, .cards, .who, .studies { grid-template-columns: 1fr; }
-  .phases { grid-template-columns: 1fr 1fr; }
+  .stats .grid, .cards, .who, .studies, .origin { grid-template-columns: 1fr; }
   .sources { grid-template-columns: 1fr; }
   .stat, .stat + .stat { padding: 26px 0; border-left: 0; }
   .stat + .stat { border-top: 1px solid var(--line); }
@@ -291,6 +282,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   .pnode span { width: 36px; height: 36px; }
   .pnav::before, .pnav::after { top: 17px; }
   .pbox { grid-template-columns: 1fr; gap: 14px; }
+  .sub3 { margin-top: 56px; }
 }
 @media (max-width: 520px) {
   nav .btn { padding: 10px 14px; }
@@ -298,14 +290,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   .data .panel { padding: 20px 16px 18px; }
   .hero h1 { font-size: 42px; }
   .kicker { letter-spacing: .14em; }
-  .btab { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 4px; }
-  .phases { grid-template-columns: 1fr; }
-  #chart { height: 250px; }
-  .lg { padding: 10px 12px; }
-  .out { gap: 8px; }
-  .out > div { padding: 12px 10px; }
-  .out .v { font-size: 24px; }
-  .out .l { font-size: 11px; }
+  .pnode { font-size: 11px; letter-spacing: -.01em; }
+  .resp { flex-direction: column; gap: 12px; padding: 20px 18px; }
   .wa { padding: 15px; }
   .wa span { display: none; }
   footer { padding-bottom: 100px; }
@@ -319,7 +305,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   <div class="wrap">
     <a class="brand" href="#topo"><img src="logo.png" alt="">RESONANZA</a>
     <div class="links">
-      <a href="#frentes">Frentes</a><a href="#dados">Dados</a><a href="#metodo">Método</a><a href="#estudos">Estudos</a>
+      <a href="#problema">Problema</a><a href="#protocolo">Protocolo</a><a href="#evidencia">Evidência</a><a href="#para-quem">Para quem</a>
     </div>
     <a class="btn" href="#contato">Fale conosco</a>
   </div>
@@ -329,17 +315,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   <section class="hero">
     <div class="wrap">
       <div>
-        <div class="kicker" data-reveal>Inteligência territorial energética</div>
-        <h1 data-reveal>Energia de base <span class="grad">escondida</span> nos dados do petróleo.</h1>
-        <p class="lede" data-reveal>Décadas de exploração deixaram um acervo público de poços, perfis, temperaturas e produção. A ResonAnza reinterpreta esses dados para encontrar energia renovável de base em bacias sedimentares brasileiras e mostrar onde vale investir.</p>
+        <div class="kicker" data-reveal>Qualidade da água · Pará</div>
+        <h1 data-reveal>Qualidade da água <span class="grad">onde o dado não chega.</span></h1>
+        <p class="lede" data-reveal>No Pará, cerca de 208 mil domicílios tiram água de cacimba ou poço raso em setores com fossa rudimentar (estimativa a partir do Censo 2022), e os cadastros oficiais quase não chegam a essas fontes.</p>
+        <p class="lede" data-reveal>A ResonAnza desenvolve um <strong>protocolo de calibração</strong>: agentes comunitários medem com kits de baixo custo, cada amostra tem frasco rastreável, cerca de 1 em cada 10 vai a um laboratório habilitado como referência, e um método estatístico estima e corrige o erro do kit.</p>
         <div class="cta" data-reveal>
-          <a class="btn solid" href="#dados">Explore os dados <span aria-hidden="true">→</span></a>
-          <a class="btn" href="#metodo">Como funciona</a>
+          <a class="btn solid" href="#protocolo">Veja o protocolo <span aria-hidden="true">→</span></a>
+          <a class="btn" href="#problema">O problema</a>
         </div>
+        <p class="note" data-reveal>Estágio: TRL 4 · o protocolo ainda não foi aplicado em campo · piloto de 30 cacimbas planejado</p>
       </div>
       <div class="stage" aria-hidden="true">
         <canvas id="field"></canvas>
-        <div class="caption">Campo girante trifásico</div>
       </div>
     </div>
   </section>
@@ -347,148 +334,166 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   <div class="stats">
     <div class="wrap">
       <div class="grid">
-        <div class="stat" data-reveal><div class="n">107 mil<small>m³/dia</small></div><p>de água produzida em três campos maduros do Potiguar (107.237 m³/dia)</p></div>
-        <div class="stat" data-reveal><div class="n">66 : 1</div><p>de água para cada unidade de óleo nesses campos (1.615 m³/dia de óleo)</p></div>
-        <div class="stat" data-reveal><div class="n">4<small>bacias</small></div><p>sedimentares no radar, do Nordeste à Margem Equatorial</p></div>
+        <div class="stat" data-reveal><div class="n">1,2<small>milhão</small></div><p>de domicílios no Brasil tiram água de cacimba ou poço raso em setores com fossa rudimentar (estimativa central; faixa de 850 mil a 1,6 milhão)</p></div>
+        <div class="stat" data-reveal><div class="n">208<small>mil</small></div><p>domicílios nessa situação no Pará, o estado mais exposto (estimativa central; faixa de 162 mil a 256 mil)</p></div>
+        <div class="stat" data-reveal><div class="n">0,5–2,2<small>%</small></div><p>é o alcance aproximado do cadastro da vigilância (SISAGUA) entre os domicílios que dependem de cacimba ou poço nos três municípios paraenses mais expostos</p></div>
       </div>
-      <p class="note">Estreito, Alto do Rodrigues e Canto do Amaro, agosto de 2026 · Fonte: <a href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-fase-de-desenvolvimento-e-producao/producao-por-zona/producao_zona_08-2026.csv" target="_blank" rel="noopener">ANP, produção por zona (CSV)</a>, somada por campo.</p>
+      <p class="note">Estimativas da ResonAnza com dados públicos: <a href="#fontes">IBGE, Censo 2022</a>, em todos os setores censitários, e <a href="#fontes">SISAGUA</a>, em Itaituba, Marabá e Novo Repartimento. Os limites de cada número estão descritos abaixo.</p>
     </div>
   </div>
 
-  <section class="block" id="frentes">
+  <section class="block" id="problema">
     <div class="wrap">
       <div class="head" data-reveal>
-        <div class="kicker">Frentes</div>
-        <h2>Três frentes, um mesmo acervo de dados.</h2>
-        <p>O que a indústria do petróleo mediu para encontrar óleo também descreve calor, água e território. Cada frente usa esse acervo de um jeito.</p>
-      </div>
-      <div class="cards">
-        <article class="card panel" data-reveal>
-          <span class="tag">Primeira aplicação</span>
-          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M24 6c-7 9-11 15-11 21a11 11 0 0 0 22 0c0-6-4-12-11-21Z"/><path d="M17 30c2 2 4 3 7 3s5-1 7-3" stroke="#fbbf24"/></svg>
-          <h3>Calor da água produzida</h3>
-          <p>Campos maduros produzem dezenas de vezes mais água que óleo, e essa água carrega calor da rocha. Um módulo na estação coletora recupera esse calor e o entrega a consumidores da região, sem mexer na produção.</p>
-        </article>
-        <article class="card panel" data-reveal>
-          <span class="tag">Mapeamento</span>
-          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 14c7-3 13 3 20 0s13-3 20 0"/><path d="M4 24c7-3 13 3 20 0s13-3 20 0"/><path d="M4 34c7-3 13 3 20 0s13-3 20 0" stroke="#fbbf24"/><path d="M24 6v36" stroke-dasharray="2 4"/></svg>
-          <h3>Geotermia sedimentar</h3>
-          <p>Temperatura de fundo de poço corrigida, gradiente e litologia, poço a poço, para localizar calor de baixa e média entalpia nas bacias brasileiras.</p>
-        </article>
-        <article class="card panel" data-reveal>
-          <span class="tag">Plataforma</span>
-          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12l12-5 12 5 12-5v29l-12 5-12-5-12 5Z"/><path d="M18 7v29M30 12v29"/><circle cx="35" cy="20" r="3" stroke="#fbbf24"/></svg>
-          <h3>Inteligência territorial</h3>
-          <p>Ranking de oportunidades com distância à rede, áreas protegidas e logística. Mapas, relatórios e API para quem decide onde investir.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="dados">
-    <div class="wrap">
-      <div class="head" data-reveal>
-        <div class="kicker">Dados</div>
-        <h2>O que os dados públicos já mostram.</h2>
-        <p>Dois recortes do nosso trabalho: a água que três campos maduros produzem mês a mês, e quanto calor um módulo consegue tirar dela conforme a temperatura de chegada.</p>
+        <div class="kicker">O problema</div>
+        <h2>Muitas casas bebem água de cacimba. Pouca dessa água é medida.</h2>
+        <p>Cruzamos, em todos os setores censitários do Censo 2022, a fonte de água e o destino do esgoto dos domicílios. O resultado mostra onde a cacimba e a fossa rudimentar convivem e quanto os sistemas oficiais conseguem medir.</p>
       </div>
       <div class="data">
         <div class="panel" data-reveal>
-          <div class="ptitle"><h3>Água produzida, m³/dia</h3><span class="note">jan/2025 – ago/2026</span></div>
-          <div class="legend" id="legend"></div>
-          <div class="chartwrap">
-            <svg id="chart" role="img" aria-label="Água produzida por campo, empilhada, de janeiro de 2025 a agosto de 2026"></svg>
-            <div class="tip" id="tip"></div>
+          <div class="ptitle"><h3>Cacimba e fossa rudimentar no mesmo setor</h3><span class="note">por região, Censo 2022</span></div>
+          <div class="bars" style="--scale: 550">
+            <div class="bar" style="--min: 329; --c: 422; --max: 517"><div class="bl"><span>Norte</span><b>422 mil</b></div><div class="track"><i class="fill"></i><i class="rng"></i></div><div class="bs">faixa 329–517 mil · 12 % dos domicílios com cacimba ou poço raso</div></div>
+            <div class="bar" style="--min: 266; --c: 396; --max: 514"><div class="bl"><span>Nordeste</span><b>396 mil</b></div><div class="track"><i class="fill"></i><i class="rng"></i></div><div class="bs">faixa 266–514 mil · 4 % dos domicílios com cacimba ou poço raso</div></div>
+            <div class="bar" style="--min: 102; --c: 177; --max: 261"><div class="bl"><span>Sudeste</span><b>177 mil</b></div><div class="track"><i class="fill"></i><i class="rng"></i></div><div class="bs">faixa 102–261 mil · 1 % dos domicílios com cacimba ou poço raso</div></div>
+            <div class="bar" style="--min: 79; --c: 113; --max: 147"><div class="bl"><span>Centro-Oeste</span><b>113 mil</b></div><div class="track"><i class="fill"></i><i class="rng"></i></div><div class="bs">faixa 79–147 mil · 3 % dos domicílios com cacimba ou poço raso</div></div>
+            <div class="bar" style="--min: 73; --c: 107; --max: 140"><div class="bl"><span>Sul</span><b>107 mil</b></div><div class="track"><i class="fill"></i><i class="rng"></i></div><div class="bs">faixa 73–140 mil · 2 % dos domicílios com cacimba ou poço raso</div></div>
           </div>
-          <p class="note">Fonte: <a href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos" target="_blank" rel="noopener">ANP, dados abertos</a> — produção por zona, mês a mês, somada por campo (<a href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-fase-de-desenvolvimento-e-producao/producao-por-zona/metadados-producao-zona.docx" target="_blank" rel="noopener">metadados</a>). Março de 2026 não foi publicado. Toque ou passe o cursor sobre o gráfico.</p>
+          <div class="total"><span>Brasil · 3 % dos domicílios com cacimba ou poço raso</span><b>1,2 milhão (850 mil–1,6 milhão)</b></div>
+          <div class="key"><span><i class="kf"></i>estimativa central</span><span><i class="kr"></i>faixa</span></div>
+          <p class="note" style="margin-top: 14px">O Censo informa, por setor, quantas casas usam cacimba e quantas usam fossa rudimentar, mas não a combinação na mesma casa: a faixa vai do mínimo aritmético garantido ao máximo possível. Fonte: <a href="#fontes">IBGE, Censo 2022</a>; cruzamento da ResonAnza.</p>
         </div>
-        <div class="panel sim" data-reveal>
-          <div class="ptitle"><h3>Simulador do módulo</h3><span class="note">500 kW por módulo</span></div>
-          <label>Temperatura da água na chegada <strong id="tv"></strong>
-            <input id="simT" type="range" min="45" max="70" step="0.1" value="55" aria-label="Temperatura da água na chegada">
-          </label>
-          <label>Vazão de água disponível <strong id="qv"></strong>
-            <input id="simQ" type="range" min="0" max="1000" step="1" value="434" aria-label="Vazão de água disponível">
-          </label>
-          <div class="out">
-            <div><div class="v" id="oMin">—</div><div class="l">m³/dia mínimos por módulo</div></div>
-            <div><div class="v" id="oMod">—</div><div class="l">módulos que a vazão sustenta</div></div>
-            <div><div class="v" id="oMW">—</div><div class="l">MW térmicos em módulos inteiros</div></div>
+        <div class="panel" data-reveal>
+          <div class="ptitle"><h3>No Pará, o problema está no interior</h3></div>
+          <p>A Região Metropolitana de Belém responde por cerca de 3 % da exposição estadual. O centro do problema está na Transamazônica e no sul e sudeste do estado.</p>
+          <div class="bars" style="--scale: 13">
+            <div class="bar" style="--c: 13"><div class="bl"><span>Itaituba</span><b>~13 mil</b></div><div class="track"><i class="fill"></i></div></div>
+            <div class="bar" style="--c: 11"><div class="bl"><span>Marabá</span><b>~11 mil</b></div><div class="track"><i class="fill"></i></div></div>
+            <div class="bar" style="--c: 7"><div class="bl"><span>Novo Repartimento</span><b>~7 mil</b></div><div class="track"><i class="fill"></i></div></div>
+            <div class="bar" style="--c: 7"><div class="bl"><span>São Félix do Xingu</span><b>~7 mil</b></div><div class="track"><i class="fill"></i></div></div>
+            <div class="bar" style="--c: 6"><div class="bl"><span>Pacajá</span><b>~6 mil</b></div><div class="track"><i class="fill"></i></div></div>
+            <div class="bar" style="--c: 6"><div class="bl"><span>Anapu</span><b>~6 mil</b></div><div class="track"><i class="fill"></i></div></div>
           </div>
-          <p class="msg" id="oMsg"></p>
-          <svg id="curve" aria-hidden="true"></svg>
-          <p class="note">Fonte: modelo próprio da cadeia de trocadores de um projeto FEED de 500 kW, interpolado entre os pontos calculados. Não é dado público e não substitui estudo de viabilidade nem medição em campo.</p>
+          <p>Em Itaituba, 45,7 % dos domicílios usam cacimba ou poço raso.</p>
+          <p class="note" style="margin-top: 14px">Domicílios com cacimba e fossa rudimentar no mesmo setor, estimativa central. Fonte: <a href="#fontes">IBGE, Censo 2022</a>; cruzamento da ResonAnza.</p>
         </div>
       </div>
+
+      <h3 class="sub3" data-reveal>Os sistemas oficiais medem pouco essas fontes.</h3>
+      <div class="cards">
+        <article class="card panel" data-reveal>
+          <span class="tag">SIAGAS · SGB</span>
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20 24 9l14 11"/><path d="M14 20v20h20V20"/><path d="M24 14v8"/><path d="M19 32c2 1.5 3.5 2 5 2s3-.5 5-2" stroke="#fbbf24"/></svg>
+          <h3>Cacimbas quase fora do cadastro de poços</h3>
+          <p>Nos três municípios paraenses mais expostos (Itaituba, Marabá e Novo Repartimento), o cadastro de poços do Serviço Geológico do Brasil tem 4 registros de cacimba, e só 1 tem pH medido.</p>
+        </article>
+        <article class="card panel" data-reveal>
+          <span class="tag">SISAGUA · cadastro</span>
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="8" width="26" height="34" rx="3"/><path d="M18 8V5h12v3"/><path d="M17 18h14M17 25h14M17 32h8"/><circle cx="33" cy="35" r="2" stroke="#fbbf24"/></svg>
+          <h3>Cobertura de 0,5 % a 2,2 %</h3>
+          <p>O sistema de vigilância da qualidade da água do Ministério da Saúde registra soluções individuais, mas seu cadastro alcança cerca de 0,5 % a 2,2 % dos domicílios que, segundo o Censo, dependem de cacimba ou poço nesses municípios. A estimativa é aproximada, porque as duas bases não usam as mesmas categorias.</p>
+        </article>
+        <article class="card panel" data-reveal>
+          <span class="tag">SISAGUA · 2022–2026</span>
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6c-7 9-11 15-11 21a11 11 0 0 0 22 0c0-6-4-12-11-21Z"/><circle cx="20" cy="28" r="2" stroke="#fbbf24"/><circle cx="27.5" cy="31.5" r="1.5" stroke="#fbbf24"/><circle cx="26" cy="23.5" r="1.5" stroke="#fbbf24"/></svg>
+          <h3>33 % das análises detectaram <i>E. coli</i></h3>
+          <p>De 2022 a 2026, 143 de 435 análises dessas soluções detectaram <i>E. coli</i>. É percentual de análises, não prevalência entre todas as casas: o cadastro não separa cacimba de poço tubular e 92 % das análises são urbanas. Não há resultados publicados de nitrato.</p>
+        </article>
+      </div>
+      <p class="closing" data-reveal>O problema não é a falta de vigilância. É a cobertura limitada e a falta de resolução territorial e de parâmetros para <span class="grad">decidir casa a casa.</span></p>
     </div>
   </section>
 
-  <section class="block" id="metodo">
+  <section class="block" id="protocolo">
     <div class="wrap">
       <div class="head" data-reveal>
-        <div class="kicker">Método</div>
-        <h2>Do dado público à decisão, em cinco etapas.</h2>
-        <p>Clique em cada etapa para ver o que entra, o que fazemos e o que sai.</p>
+        <div class="kicker">O protocolo</div>
+        <h2>Medida barata no campo, laboratório como referência.</h2>
+        <p>O diferencial não é um algoritmo isolado, e sim o protocolo completo. Clique em cada etapa para ver o que entra, o que acontece e o que sai.</p>
       </div>
       <div class="panel pipe" data-reveal>
-        <div class="pnav" id="pnav" role="tablist" aria-label="Etapas do método"></div>
+        <div class="pnav" id="pnav" role="tablist" aria-label="Etapas do protocolo"></div>
         <div class="pbox" id="pbox" role="tabpanel" aria-live="polite"></div>
-        <p class="note">Cada número carrega a fonte e o método. Dado ausente continua ausente, nunca vira um zero que parece medição.</p>
+        <p class="note">É assim que o protocolo foi desenhado. Ele ainda não foi aplicado em campo, e o método de calibração ainda não foi aplicado a dados reais: o piloto será a primeira aplicação real.</p>
       </div>
     </div>
   </section>
 
-  <section class="block" id="estudos">
+  <section class="block" id="orientacao">
     <div class="wrap">
       <div class="head" data-reveal>
-        <div class="kicker">Estudos</div>
-        <h2>Trabalho feito, não promessa.</h2>
+        <div class="kicker">Orientação por casa</div>
+        <h2>Cada casa recebe a orientação do seu problema.</h2>
+        <p>Cada território tem uma química diferente. Na Região Metropolitana de Belém (aquífero Barreiras), 65 % dos poços cadastrados são ácidos, com pH abaixo de 6. Em Itaituba, Marabá e Novo Repartimento, o pH mediano fica entre 6,2 e 6,7, e o risco principal das cacimbas é a contaminação por fossa rudimentar. Por isso a orientação é por casa, e não um filtro único.</p>
+      </div>
+      <div class="cards">
+        <article class="card panel" data-reveal>
+          <span class="tag lc">pH abaixo de 6</span>
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 34a16 16 0 0 1 32 0"/><path d="M24 34l-7-9" stroke="#fbbf24"/><circle cx="24" cy="34" r="2"/><path d="M8 40h32"/></svg>
+          <h3>Acidez</h3>
+          <p>Filtro de contato com calcário local, com pré-filtro ou lavagem periódica onde houver ferro. O calcário corrige só a acidez: não remove coliforme, nitrato nem amônio.</p>
+        </article>
+        <article class="card panel" data-reveal>
+          <span class="tag lc">coliforme ou <i>E. coli</i> presente</span>
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6l14 5v11c0 9-6 16-14 20-8-4-14-11-14-20V11Z"/><path d="M24 17c-3 4-5 6.5-5 9a5 5 0 0 0 10 0c0-2.5-2-5-5-9Z" stroke="#fbbf24"/></svg>
+          <h3>Contaminação fecal</h3>
+          <p>Desinfecção (cloração dosada ou fervura), proteção sanitária da boca da cacimba (tampa, calçada, retirada com balde exclusivo ou bomba), afastamento da fossa e comunicação à vigilância municipal.</p>
+        </article>
+        <article class="card panel" data-reveal>
+          <span class="tag lc">nitrato acima de 10 mg/L como N</span>
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6c-7 9-11 15-11 21a11 11 0 0 0 22 0c0-6-4-12-11-21Z"/><path d="M24 21v8" stroke="#fbbf24"/><path d="M24 33.5v.01" stroke="#fbbf24" stroke-width="3"/></svg>
+          <h3>Nitrato</h3>
+          <p>Não usar a água para beber nem cozinhar até haver fonte segura (poço mais profundo ou rede) ou tratamento especificamente validado. Fervura, cloro e filtro de barro não removem nitrato, e a fervura o concentra. Prioridade para casas com bebês e gestantes.</p>
+        </article>
+      </div>
+      <div class="panel resp" data-reveal>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6l14 5v11c0 9-6 16-14 20-8-4-14-11-14-20V11Z"/><path d="M17 24l5 5 9-10"/></svg>
+        <p><strong>A responsabilidade sanitária é da vigilância municipal</strong>, que recebe os resultados críticos. A ResonAnza complementa a vigilância: não a substitui nem emite laudo de potabilidade. As orientações são técnicas e preliminares, seguem os limites da Portaria GM/MS 888/2021 e estão sujeitas à confirmação da vigilância.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="evidencia">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <div class="kicker">Estágio atual · TRL 4</div>
+        <h2>O que já existe, e o que ainda não.</h2>
+        <p>Componentes desenvolvidos e avaliados em ambiente controlado. O piloto levará o protocolo integrado (coleta, kit, referência de laboratório e calibração) a ambiente real.</p>
       </div>
       <div class="studies">
         <article class="panel study" data-reveal>
-          <div class="meta"><span class="tag">Potiguar</span>out/2026</div>
-          <h3>Série de produção por campo</h3>
-          <p>Água, óleo e BSW mês a mês a partir da produção por zona da ANP, com os meses sem publicação marcados como ausentes. Mais de 98% do que sai dos poços analisados é água.</p>
-          <p class="src">Fonte: ANP, produção por zona, jan/2025 – ago/2026</p>
+          <div class="meta"><span class="tag">Validado às cegas</span>RMB · SIAGAS</div>
+          <h3>Modelo de acidez da água de poço</h3>
+          <p>Teste às cegas com dados reais de 1.153 poços da Região Metropolitana de Belém com pH. A cada rodada, um município inteiro é escondido; o modelo é ajustado com os demais e prevê os escondidos. A referência é prever para todos a taxa de pH ≥ 6 do treino. Com a profundidade, o erro de probabilidade (Brier) fica 28 % menor que essa taxa de base (26,8 % menor em blocos de 5 km), com AUC de 0,75 a 0,77.</p>
+          <p class="src">Validado só na RMB. Não demonstra desempenho no interior nem para contaminação microbiológica.</p>
         </article>
         <article class="panel study" data-reveal>
-          <div class="meta"><span class="tag">Potiguar</span>out/2026</div>
-          <h3>Zonas produtoras e profundidade</h3>
-          <p>Cruzamento de zona, cota e completação para estimar a temperatura de cada zona produtora e separar o calor que vem da geologia do que depende da operação.</p>
-          <p class="src">Fonte: ANP, produção por zona e dados de poço</p>
+          <div class="meta"><span class="tag">Implementado</span>18 testes automatizados</div>
+          <h3>Método de calibração por encolhimento</h3>
+          <p>Estima o erro de cada lote de kit a partir dos pares kit × laboratório e o encolhe para o padrão comum quando há pouca evidência. Está implementado e coberto por testes automatizados com dados montados.</p>
+          <p class="src">Ainda não foi aplicado a dados reais. A primeira aplicação real será no piloto.</p>
         </article>
         <article class="panel study" data-reveal>
-          <div class="meta"><span class="tag">Engenharia</span>out/2026</div>
-          <h3>Modelo do módulo de recuperação de calor</h3>
-          <p>A cadeia de trocadores de um projeto FEED reproduzida em código: vazão mínima em função da temperatura de entrada e o piso abaixo do qual o módulo não fecha a carga.</p>
-          <p class="src">Fonte: projeto FEED do módulo de 500 kW</p>
+          <div class="meta"><span class="tag">Implementado</span>em revisão</div>
+          <h3>Aplicativo de coleta</h3>
+          <p>GPS, foto e consentimento do morador (LGPD), sem nome, telefone ou endereço. Campos de pH, nitrato (com conversão para N), coliforme total, <i>E. coli</i>, distância à fossa, lote do kit e código de frasco. O resultado do coliforme entra depois, pelo código único do frasco; só o agente que coletou registra, e um resultado gravado não é sobrescrito.</p>
+          <p class="src">Ainda sem implantação em servidor.</p>
         </article>
         <article class="panel study" data-reveal>
-          <div class="meta"><span class="tag">Dados</span>2026</div>
-          <h3>Correção de temperatura de fundo de poço</h3>
-          <p>Cascata de métodos de correção com calibração por formação a partir de poços com medição completa. Cada temperatura corrigida guarda o método que a produziu.</p>
-          <p class="src">Fonte: relatórios de fim de poço e perfis do acervo da ANP</p>
+          <div class="meta"><span class="tag">Dados públicos</span>Censo · SIAGAS · SISAGUA</div>
+          <h3>Diagnóstico com dados públicos</h3>
+          <p>Cruzamento do Censo 2022 em todos os setores censitários do país e do Pará; SIAGAS por aquífero e em detalhe na RMB, no litoral e nos três municípios mais expostos; SISAGUA (cadastro e vigilância, 2022 a 2026) nesses três municípios. Os números desta página vêm daí.</p>
+          <p class="src">Fontes, filtros, datas de extração e código para refazer estão documentados.</p>
         </article>
       </div>
-      <div class="panel basins" data-reveal>
-        <div class="btabs" id="btabs" role="tablist" aria-label="Bacias"></div>
-        <div class="bpanel" id="bpanel" role="tabpanel" aria-live="polite"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="fases">
-    <div class="wrap">
-      <div class="head" data-reveal>
-        <div class="kicker">Como começamos</div>
-        <h2>Em fases, com critério para seguir.</h2>
-        <p>Nenhuma fase pede investimento antes de a anterior provar o número.</p>
-      </div>
-      <div class="phases">
-        <article class="panel phase" data-reveal><div class="num">0</div><h3>Dado</h3><p>A operadora compartilha temperatura e vazão da água, sob NDA. Sem custo.</p><div class="gate">Segue se a água chega quente o bastante</div></article>
-        <article class="panel phase" data-reveal><div class="num">1</div><h3>Estudo</h3><p>Viabilidade do ativo: número de módulos, custo do calor e consumidor da região.</p><div class="gate">Segue com carta de intenção de um comprador</div></article>
-        <article class="panel phase" data-reveal><div class="num">2</div><h3>Piloto</h3><p>Um módulo instalado e operado por 12 meses, com instituição de pesquisa parceira.</p><div class="gate">Segue com disponibilidade de 90% ou mais</div></article>
-        <article class="panel phase" data-reveal><div class="num">3</div><h3>Operação</h3><p>Uma empresa de projeto instala e opera os módulos e vende o calor em contrato longo.</p><div class="gate">Sem investimento da operadora</div></article>
+      <div class="panel pipe pilot" data-reveal>
+        <div class="ptitle"><h3>Próximo passo: piloto de 30 cacimbas</h3><span class="tag">Planejado</span></div>
+        <div class="pbox">
+          <div><h4>Onde</h4><p>Em 3 setores de um município do interior do Pará, com 3 a 5 agentes comunitários. A coleta será feita na boca da cacimba e na torneira da mesma casa, com o consentimento de cada família.</p></div>
+          <div><h4>O que vai testar</h4><p>A viabilidade do protocolo em campo: coleta, transporte, rastreio, resultado em 24 a 48 horas e devolução à família. Os kits serão comparados com o laboratório (<i>E. coli</i> e nitrato), com o erro estimado e seu intervalo.</p></div>
+          <div><h4>O que vai entregar</h4><p>O resultado de cada casa devolvido à família e todos os resultados críticos comunicados à vigilância municipal. Uma previsão cega de <i>E. coli</i>, registrada antes da leitura dos kits, será comparada à taxa de base.</p></div>
+        </div>
+        <p class="note">É um piloto de viabilidade, não de precisão: vai estimar a ordem de grandeza do erro do kit, com intervalos largos. A calibração com precisão exige de 30 a 50 referências de laboratório. Coletar na boca e na torneira separa a contaminação da fonte da contaminação da reservação.</p>
       </div>
     </div>
   </section>
@@ -497,12 +502,25 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
     <div class="wrap">
       <div class="head" data-reveal>
         <div class="kicker">Para quem</div>
-        <h2>Para quem decide sobre energia e território.</h2>
+        <h2>Quem pode usar esse dado.</h2>
+        <p>São usuários potenciais. A disposição para contratar, o preço e o caminho de contratação ainda não estão validados: são hipóteses que o piloto vai testar.</p>
       </div>
       <div class="who">
-        <div data-reveal><h3>Operadoras de petróleo</h3><p>Valor de um recurso hoje descartado, sem investimento e sem risco à produção. Projetos que podem usar recurso de PD&amp;I.</p></div>
-        <div data-reveal><h3>Utilities</h3><p>Pilotos de inteligência territorial financiáveis pelo programa de P&amp;D regulado da ANEEL.</p></div>
-        <div data-reveal><h3>Governos e investidores</h3><p>Due diligence territorial: onde investir, o que evitar e com qual risco técnico, ambiental e logístico.</p></div>
+        <div data-reveal><h3>Vigilância municipal da qualidade da água</h3><p>O Vigiagua já coleta análises dessas soluções e tem a obrigação de vigiá-las. O protocolo pode gerar dado onde o cadastro oficial quase não chega, com os resultados críticos encaminhados à própria vigilância.</p></div>
+        <div data-reveal><h3>Secretarias de saúde e de meio ambiente</h3><p>Diagnóstico por lote ou setor para orientar o investimento público para a solução certa em cada casa, em vez de tratar todas as fontes do mesmo jeito.</p></div>
+        <div data-reveal><h3>Operadores de saneamento</h3><p>Retrato das soluções individuais de abastecimento por lote ou setor: coleta pelos agentes, referência de laboratório, correção estatística e orientação por casa.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="origem">
+    <div class="wrap">
+      <div class="panel origin" data-reveal>
+        <div>
+          <div class="kicker">Origem</div>
+          <h2>A mesma ideia de calibração, vinda da energia.</h2>
+        </div>
+        <p>O método nasceu na correção de temperaturas de fundo de poço em dados públicos de poços de petróleo da ANP, usando como referência os poços com medição completa. A água usa a mesma ideia: poucas medidas de referência para corrigir muitas medidas baratas. A frente de energia está pausada; o foco agora é a água.</p>
       </div>
     </div>
   </section>
@@ -512,16 +530,13 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
       <div class="head" data-reveal>
         <div class="kicker">Fontes</div>
         <h2>De onde vem cada número.</h2>
-        <p>Trabalhamos só com dados públicos e com o nosso modelo do módulo. Os links levam ao dado original.</p>
+        <p>Os cruzamentos são feitos pela ResonAnza a partir de dados públicos. Fontes, filtros e datas de extração estão documentados.</p>
       </div>
       <ul class="sources">
-        <li data-reveal><b>Produção</b><a href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-fase-de-desenvolvimento-e-producao/producao-por-zona/producao_zona_08-2026.csv" target="_blank" rel="noopener">ANP · Produção por zona (ago/2026, CSV)</a><p>Água, óleo e BSW por poço e zona, mês a mês. Base do gráfico e dos números do topo.</p></li>
-        <li data-reveal><b>Produção</b><a href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos" target="_blank" rel="noopener">ANP · Portal de dados abertos</a><p>Série completa da produção por zona e os <a href="https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/arquivos-fase-de-desenvolvimento-e-producao/producao-por-zona/metadados-producao-zona.docx" target="_blank" rel="noopener">metadados</a> de cada coluna.</p></li>
-        <li data-reveal><b>Poços</b><span>ANP · Banco de Dados de Exploração e Produção (BDEP)</span><p>Relatórios de fim de poço, perfis LAS e planilhas de poço usados na correção de temperatura.</p></li>
-        <li data-reveal><b>Rede elétrica</b><a href="https://sigel.aneel.gov.br/" target="_blank" rel="noopener">ANEEL · SIGEL</a><p>Subestações e linhas de transmissão, para a distância de cada oportunidade à rede.</p></li>
-        <li data-reveal><b>Áreas protegidas</b><a href="https://dados.mma.gov.br/dataset/unidadesdeconservacao" target="_blank" rel="noopener">ICMBio / MMA · Unidades de Conservação</a><p>Unidades de conservação federais usadas na camada territorial.</p></li>
-        <li data-reveal><b>Áreas protegidas</b><a href="https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas" target="_blank" rel="noopener">FUNAI · Terras indígenas</a><p>Limites das terras indígenas usados na mesma camada.</p></li>
-        <li data-reveal><b>Engenharia</b><span>Projeto FEED do módulo de recuperação de calor (500 kW)</span><p>Cadeia de trocadores reproduzida em código pela ResonAnza. Base do simulador.</p></li>
+        <li data-reveal><b>População e saneamento</b><a href="https://censo2022.ibge.gov.br/" target="_blank" rel="noopener">IBGE · Censo Demográfico 2022</a><p>Fonte de água e destino do esgoto dos domicílios, por setor censitário, em todo o país. Base das estimativas de exposição.</p></li>
+        <li data-reveal><b>Vigilância da água</b><a href="https://dadosabertos.saude.gov.br/dataset?q=sisagua" target="_blank" rel="noopener">Ministério da Saúde · SISAGUA</a><p>Cadastro e vigilância de soluções alternativas individuais, de 2022 a 2026, em Itaituba, Marabá e Novo Repartimento.</p></li>
+        <li data-reveal><b>Poços</b><span>Serviço Geológico do Brasil · SIAGAS</span><p>Cadastro de poços com pH e profundidade. Base do teste às cegas na RMB e da química de cada território.</p></li>
+        <li data-reveal><b>Potabilidade</b><a href="https://bvsms.saude.gov.br/bvs/saudelegis/gm/2021/prt0888_07_05_2021.html" target="_blank" rel="noopener">Ministério da Saúde · Portaria GM/MS 888/2021</a><p>Padrão de potabilidade. Limites usados nas regras de orientação por casa, como o de nitrato (10 mg/L como N).</p></li>
       </ul>
     </div>
   </section>
@@ -529,10 +544,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
   <section class="contact" id="contato">
     <div class="wrap" data-reveal>
       <div class="kicker">Contato</div>
-      <h2>Vamos conversar sobre <span class="grad">o seu ativo</span>.</h2>
+      <h2>Vamos conversar sobre <span class="grad">a água do seu município</span>.</h2>
       <a class="mail" href="mailto:contato@resonanza.com.br?subject=Contato%20pelo%20site">contato@resonanza.com.br <span aria-hidden="true">→</span></a>
       <div class="ctas">
-        <a class="btn wa-inline" href="https://wa.me/5591985156690?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ResonAnza." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Conversar no WhatsApp</a>
+        <a class="btn wa-inline" href="https://wa.me/5591992875776?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ResonAnza." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Conversar no WhatsApp</a>
       </div>
       <p class="sub">Respondemos em até um dia útil, de segunda a sexta.</p>
     </div>
@@ -541,18 +556,17 @@ footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wr
 
 <footer>
   <div class="wrap">
-    <span>© 2026 ResonAnza · CNPJ 67.046.121/0001-45</span>
+    <span>© 2026 ResonAnza · Belém/PA · CNPJ 67.046.121/0001-45</span>
     <span><a href="#fontes">Fontes</a> · <a href="mailto:contato@resonanza.com.br">contato@resonanza.com.br</a></span>
   </div>
 </footer>
 
-<a class="wa" href="https://wa.me/5591985156690?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ResonAnza." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg><span>WhatsApp</span></a>
+<a class="wa" href="https://wa.me/5591992875776?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ResonAnza." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg><span>WhatsApp</span></a>
 
 <script>
 const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const fmt = (v, d = 0) => v.toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d });
 
-// Campo girante trifásico: três dipolos a 120°, linhas acendendo em sequência de fase.
+// Marca animada: três famílias de pétalas a 120°, acendendo em sequência.
 (() => {
   const cv = document.getElementById("field");
   const ctx = cv.getContext("2d");
@@ -661,207 +675,14 @@ const fmt = (v, d = 0) => v.toLocaleString("pt-BR", { minimumFractionDigits: d, 
   raf = requestAnimationFrame(loop);
 })();
 
-// Água produzida por campo (ANP, produção por zona). null = mês não publicado.
-(() => {
-  const M = ["2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12",
-             "2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07","2026-08"];
-  const S = [
-    { name: "Canto do Amaro", color: "#34d399", data: [52079,52910,54749,54052,54420,57026,56268,54518,50963,45014,46842,48028,48219,47967,null,46096,48640,49404,47706,49040] },
-    { name: "Estreito", color: "#fbbf24", data: [34230,37078,37689,39365,40350,40257,40306,39782,38551,38645,38322,38228,38291,38158,null,38033,39329,41480,40730,40909] },
-    { name: "Alto do Rodrigues", color: "#7dd3fc", data: [17257,17275,17348,17802,17766,17675,17720,17918,18290,18196,18011,17785,17645,17426,null,17072,17001,17286,17590,17288] },
-  ];
-  const MES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
-  const lbl = (m) => `${MES[+m.slice(5) - 1]}/${m.slice(2, 4)}`;
-  const svg = document.getElementById("chart");
-  const tip = document.getElementById("tip");
-  const legend = document.getElementById("legend");
-  const NS = "http://www.w3.org/2000/svg";
-  const el = (tag, attrs, text) => {
-    const e = document.createElementNS(NS, tag);
-    for (const k in attrs) e.setAttribute(k, attrs[k]);
-    if (text != null) e.textContent = text;
-    return e;
-  };
-  let geo = null, hoverLine = null;
-
-  S.forEach((s) => {
-    s.on = true;
-    const b = document.createElement("button");
-    b.className = "lg on";
-    b.type = "button";
-    b.setAttribute("aria-pressed", "true");
-    b.innerHTML = `<i style="background:${s.color}"></i>${s.name}`;
-    b.onclick = () => {
-      if (s.on && S.filter((x) => x.on).length === 1) return;
-      s.on = !s.on;
-      b.classList.toggle("on", s.on);
-      b.setAttribute("aria-pressed", String(s.on));
-      draw();
-    };
-    legend.appendChild(b);
-  });
-
-  function draw() {
-    const W = Math.max(280, svg.clientWidth), H = svg.clientHeight || 320, L = 52, R = 10, T = 14, B = 30;
-    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-    svg.innerHTML = "";
-    const vis = S.filter((s) => s.on);
-    const tot = M.map((_, i) => vis.reduce((a, s) => (s.data[i] == null ? a : a + s.data[i]), 0));
-    const step = 20000;
-    const maxV = Math.max(step, Math.ceil(Math.max(...tot) / step) * step);
-    const x = (i) => L + (i * (W - L - R)) / (M.length - 1);
-    const y = (v) => T + (H - T - B) * (1 - v / maxV);
-    for (let v = 0; v <= maxV; v += step) {
-      svg.appendChild(el("line", { x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: "rgba(110,231,183,.12)" }));
-      svg.appendChild(el("text", { x: L - 8, y: y(v) + 4, "text-anchor": "end" }, v ? `${v / 1000} mil` : "0"));
-    }
-    M.forEach((m, i) => {
-      if (i % (W < 520 ? 6 : 3) === 0) svg.appendChild(el("text", { x: x(i), y: H - 8, "text-anchor": "middle" }, lbl(m)));
-    });
-    const gap = M.findIndex((_, i) => S[0].data[i] == null);
-    if (gap >= 0) svg.appendChild(el("line", { x1: x(gap), x2: x(gap), y1: T, y2: H - B, stroke: "rgba(251,113,133,.45)", "stroke-dasharray": "3 4" }));
-
-    let base = M.map(() => 0);
-    vis.forEach((s) => {
-      const top = M.map((_, i) => (s.data[i] == null ? null : base[i] + s.data[i]));
-      const segs = [];
-      let seg = [];
-      M.forEach((_, i) => {
-        if (top[i] == null) { if (seg.length) segs.push(seg); seg = []; } else seg.push(i);
-      });
-      if (seg.length) segs.push(seg);
-      segs.forEach((sg) => {
-        const upper = sg.map((i, k) => `${k ? "L" : "M"}${x(i)},${y(top[i])}`).join("");
-        const lower = sg.slice().reverse().map((i) => `L${x(i)},${y(base[i])}`).join("");
-        svg.appendChild(el("path", { d: upper + lower + "Z", fill: s.color, "fill-opacity": ".2" }));
-        svg.appendChild(el("path", { d: upper, fill: "none", stroke: s.color, "stroke-width": 2, "stroke-linejoin": "round" }));
-      });
-      base = base.map((b, i) => (top[i] == null ? b : top[i]));
-    });
-    hoverLine = el("line", { y1: T, y2: H - B, stroke: "rgba(236,253,245,.5)", opacity: 0 });
-    svg.appendChild(hoverLine);
-    geo = { W, L, R, x, vis };
-  }
-
-  function show(clientX) {
-    if (!geo) return;
-    const r = svg.getBoundingClientRect();
-    const px = ((clientX - r.left) / r.width) * geo.W;
-    const i = Math.max(0, Math.min(M.length - 1, Math.round(((px - geo.L) / (geo.W - geo.L - geo.R)) * (M.length - 1))));
-    const xi = geo.x(i);
-    hoverLine.setAttribute("x1", xi);
-    hoverLine.setAttribute("x2", xi);
-    hoverLine.setAttribute("opacity", 1);
-    const missing = geo.vis[0].data[i] == null;
-    let html = `<b>${lbl(M[i])}</b>`;
-    if (missing) html += `<div><span>Mês não publicado pela ANP</span></div>`;
-    else {
-      let total = 0;
-      geo.vis.forEach((s) => { total += s.data[i]; html += `<div><span>${s.name}</span><span>${fmt(s.data[i])}</span></div>`; });
-      html += `<div class="tot"><span>Total</span><span>${fmt(total)}</span></div>`;
-    }
-    tip.innerHTML = html;
-    const left = (xi / geo.W) * r.width;
-    const tw = tip.offsetWidth || 200;
-    tip.style.left = `${left + 14 + tw > r.width ? left - tw - 14 : left + 14}px`;
-    tip.style.opacity = 1;
-  }
-  function hide() { tip.style.opacity = 0; if (hoverLine) hoverLine.setAttribute("opacity", 0); }
-  svg.addEventListener("pointermove", (e) => show(e.clientX));
-  svg.addEventListener("pointerdown", (e) => show(e.clientX));
-  svg.addEventListener("pointerleave", hide);
-  new ResizeObserver(draw).observe(svg);
-  draw();
-})();
-
-// Simulador do módulo: vazão mínima por módulo de 500 kW em função da temperatura de chegada.
-(() => {
-  const PTS = [[50, 4055], [52, 1652], [55, 933], [60, 575], [70, 349]];
-  const FLOOR = 48.8;
-  const $ = (id) => document.getElementById(id);
-  const sT = $("simT"), sQ = $("simQ"), curve = $("curve");
-  const NS = "http://www.w3.org/2000/svg";
-  const el = (tag, attrs, text) => {
-    const e = document.createElementNS(NS, tag);
-    for (const k in attrs) e.setAttribute(k, attrs[k]);
-    if (text != null) e.textContent = text;
-    return e;
-  };
-  const flowFrom = (s) => Math.round((500 * Math.pow(120, s / 1000)) / 10) * 10;
-
-  function minFlow(T) {
-    if (T < FLOOR) return Infinity;
-    if (T < PTS[0][0]) return NaN;
-    for (let i = 0; i < PTS.length - 1; i++) {
-      const [t0, q0] = PTS[i], [t1, q1] = PTS[i + 1];
-      if (T <= t1) {
-        const f = (T - t0) / (t1 - t0);
-        return Math.exp(Math.log(q0) + f * (Math.log(q1) - Math.log(q0)));
-      }
-    }
-    return PTS[PTS.length - 1][1];
-  }
-
-  function drawCurve(T) {
-    const W = Math.max(260, curve.clientWidth), H = 150, L = 40, R = 8, Tp = 8, B = 22;
-    curve.setAttribute("viewBox", `0 0 ${W} ${H}`);
-    curve.innerHTML = "";
-    const x = (t) => L + ((t - 45) / 25) * (W - L - R);
-    const ly = (q) => Tp + (H - Tp - B) * (1 - (Math.log(q) - Math.log(300)) / (Math.log(6000) - Math.log(300)));
-    curve.appendChild(el("rect", { x: x(45), y: Tp, width: x(FLOOR) - x(45), height: H - Tp - B, fill: "rgba(251,113,133,.12)" }));
-    curve.appendChild(el("text", { x: (x(45) + x(FLOOR)) / 2, y: Tp + 14, "text-anchor": "middle" }, "sem módulo"));
-    [300, 1000, 3000].forEach((q) => {
-      curve.appendChild(el("line", { x1: L, x2: W - R, y1: ly(q), y2: ly(q), stroke: "rgba(110,231,183,.12)" }));
-      curve.appendChild(el("text", { x: L - 6, y: ly(q) + 3, "text-anchor": "end" }, q >= 1000 ? `${q / 1000} mil` : q));
-    });
-    [45, 50, 55, 60, 65, 70].forEach((t) => curve.appendChild(el("text", { x: x(t), y: H - 6, "text-anchor": "middle" }, `${t} °C`)));
-    let d = "";
-    for (let t = 50; t <= 70.001; t += 0.25) d += `${d ? "L" : "M"}${x(t)},${ly(minFlow(t))}`;
-    curve.appendChild(el("path", { d, fill: "none", stroke: "#34d399", "stroke-width": 2 }));
-    curve.appendChild(el("line", { x1: x(T), x2: x(T), y1: Tp, y2: H - B, stroke: "rgba(251,191,36,.6)", "stroke-dasharray": "3 3" }));
-    const m = minFlow(T);
-    if (Number.isFinite(m)) curve.appendChild(el("circle", { cx: x(T), cy: ly(m), r: 5, fill: "#fbbf24" }));
-  }
-
-  function update() {
-    const T = +sT.value, Q = flowFrom(+sQ.value), m = minFlow(T);
-    $("tv").textContent = `${fmt(T, 1)} °C`;
-    $("qv").textContent = `${fmt(Q)} m³/dia`;
-    const msg = $("oMsg");
-    msg.classList.remove("warn");
-    if (m === Infinity) {
-      $("oMin").textContent = "—"; $("oMod").textContent = "0"; $("oMW").textContent = "0";
-      msg.textContent = "Abaixo do piso térmico do módulo: nenhuma vazão fecha a carga.";
-      msg.classList.add("warn");
-    } else if (Number.isNaN(m)) {
-      $("oMin").textContent = "—"; $("oMod").textContent = "?"; $("oMW").textContent = "?";
-      msg.textContent = "Logo acima do piso: a vazão necessária cresce muito rápido. Aqui só a medição decide.";
-      msg.classList.add("warn");
-    } else {
-      const n = Q / m;
-      $("oMin").textContent = fmt(m);
-      $("oMod").textContent = n < 1 ? "< 1" : fmt(n, 1);
-      $("oMW").textContent = fmt(Math.floor(n) * 0.5, 1);
-      msg.textContent = n < 1
-        ? "A vazão não chega a sustentar um módulo inteiro nessa temperatura."
-        : `Cada grau a mais reduz a vazão que um módulo precisa. A ${fmt(T, 1)} °C, esta vazão sustenta ${fmt(Math.floor(n))} módulo${Math.floor(n) > 1 ? "s" : ""}.`;
-    }
-    drawCurve(T);
-  }
-  sT.addEventListener("input", update);
-  sQ.addEventListener("input", update);
-  new ResizeObserver(() => drawCurve(+sT.value)).observe(curve);
-  update();
-})();
-
-// Método em cinco etapas.
+// Protocolo em cinco etapas.
 (() => {
   const STEPS = [
-    { t: "Coleta", i: "Relatórios de fim de poço em PDF, perfis LAS, planilhas do BDEP e produção mensal por zona.", d: "Reunimos o acervo público da ANP e organizamos por bacia, campo e poço.", o: "Acervo bruto rastreável, com a origem de cada arquivo." },
-    { t: "Extração", i: "Documentos em formatos e unidades diferentes, escritos ao longo de décadas.", d: "IA lê os relatórios; cada campo é conferido, as unidades são convertidas e as fontes são cruzadas por ordem de confiança.", o: "Um registro por poço. Dado ausente continua ausente." },
-    { t: "Correção", i: "Temperaturas de fundo medidas durante a perfuração, ainda frias pela circulação da lama.", d: "Corrigimos esse resfriamento com o método adequado a cada poço e calibração por formação.", o: "Temperatura estimada da formação, com o método registrado." },
-    { t: "Modelo", i: "Temperaturas corrigidas, profundidade das zonas e vazão de água de cada campo.", d: "Gradiente, perda de calor no poço e na linha e modelo térmico do módulo de recuperação.", o: "Temperatura na estação e quantos módulos cada ativo sustenta." },
-    { t: "Decisão", i: "Resultado técnico, rede elétrica, áreas protegidas e logística.", d: "Ranking por poço e por zona, mapa por bacia e estudo de viabilidade em fases.", o: "Onde investir, o que evitar e o próximo passo, com critério claro." },
+    { t: "Agente", i: "Uma cacimba ou poço raso e o consentimento do morador.", d: "Um agente comunitário visita a casa e registra a coleta no aplicativo da ResonAnza: GPS, foto da fonte e consentimento (LGPD), sem nome, telefone ou endereço.", o: "Um ponto de coleta localizado, com a autorização do morador." },
+    { t: "Kit", i: "Água recém-tirada da fonte.", d: "Kits de baixo custo medem pH, nitrato (com conversão para N), coliforme total e <i>E. coli</i>; uma trena mede a distância até a fossa. O lote de cada kit fica registrado.", o: "Uma medida barata, com o lote do kit identificado." },
+    { t: "Frasco", i: "Amostra em frasco estéril de pelo menos 100 mL para coliforme.", d: "Cada frasco tem um código único. O kit de coliforme é incubado por 24 a 48 horas, e o resultado é vinculado à leitura pelo código do frasco.", o: "Amostra rastreável, da fonte ao resultado." },
+    { t: "Laboratório", i: "Cerca de 1 em cada 10 amostras.", d: "A amostra de referência segue refrigerada a um laboratório habilitado e deve chegar em até 24 horas após a coleta.", o: "O par medida barata e medida de referência, ligado pelo código do frasco." },
+    { t: "Correção", i: "Os pares kit × laboratório de cada lote de kit.", d: "Um método estatístico de encolhimento (Bayes empírico) estima o erro de cada lote e o encolhe para o padrão comum quando há pouca evidência. Só referências reais entram na correção, e não há correção fora da faixa coberta pelas referências.", o: "Leitura corrigida, cruzada com dados públicos (Censo, SIAGAS, SISAGUA), e orientação por casa." },
   ];
   const nav = document.getElementById("pnav"), box = document.getElementById("pbox");
   let cur = 0, timer = null;
@@ -879,7 +700,7 @@ const fmt = (v, d = 0) => v.toLocaleString("pt-BR", { minimumFractionDigits: d, 
     [...nav.children].forEach((b, k) => { b.classList.toggle("on", k === i); b.setAttribute("aria-selected", String(k === i)); });
     nav.style.setProperty("--p", i / (STEPS.length - 1));
     const s = STEPS[i];
-    box.innerHTML = `<div><h4>Entra</h4><p>${s.i}</p></div><div><h4>O que fazemos</h4><p>${s.d}</p></div><div><h4>Sai</h4><p>${s.o}</p></div>`;
+    box.innerHTML = `<div><h4>Entra</h4><p>${s.i}</p></div><div><h4>O que acontece</h4><p>${s.d}</p></div><div><h4>Sai</h4><p>${s.o}</p></div>`;
     box.classList.remove("swap");
     void box.offsetWidth;
     box.classList.add("swap");
@@ -888,36 +709,10 @@ const fmt = (v, d = 0) => v.toLocaleString("pt-BR", { minimumFractionDigits: d, 
   show(0);
   if (!REDUCE) {
     new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && timer === null && cur === 0) timer = setInterval(() => show((cur + 1) % STEPS.length), 5000);
+      if (e.isIntersecting && timer === null && cur === 0) timer = setInterval(() => show((cur + 1) % STEPS.length), 6000);
       if (!e.isIntersecting) stop();
     }).observe(nav);
   }
-})();
-
-// Bacias no radar.
-(() => {
-  const B = [
-    { n: "Potiguar", uf: "RN · CE", st: "Em análise", d: "Produção por zona, poços e zonas produtoras de campos maduros em terra. É onde está a primeira aplicação de calor da água produzida." },
-    { n: "Recôncavo", uf: "BA", st: "No radar", d: "Campos maduros em terra, com décadas de produção e um acervo público de poços para ler pela ótica do calor." },
-    { n: "Campos", uf: "RJ · ES", st: "No radar", d: "Acervo extenso de poços com temperatura de fundo e perfis, base para mapear gradiente e calor em profundidade." },
-    { n: "Foz do Amazonas", uf: "AP · PA", st: "Mapeamento", d: "Poços exploratórios da Margem Equatorial cruzados com a rede elétrica e com as áreas protegidas da região." },
-  ];
-  const tabs = document.getElementById("btabs"), panel = document.getElementById("bpanel");
-  B.forEach((b, i) => {
-    const t = document.createElement("button");
-    t.type = "button";
-    t.className = "btab";
-    t.setAttribute("role", "tab");
-    t.innerHTML = `<span>${b.n}</span><small>${b.uf}</small>`;
-    t.onclick = () => show(i);
-    tabs.appendChild(t);
-  });
-  function show(i) {
-    [...tabs.children].forEach((t, k) => { t.classList.toggle("on", k === i); t.setAttribute("aria-selected", String(k === i)); });
-    const b = B[i];
-    panel.innerHTML = `<div class="kicker">Bacia</div><h3>${b.n}</h3><div class="st"><span class="tag">${b.st}</span></div><p>${b.d}</p>`;
-  }
-  show(0);
 })();
 
 // Entrada suave dos blocos ao rolar.
